@@ -13,6 +13,7 @@ public class MarbleSO : ScriptableObject
     public float handling;
     public float health;
     public float weight;
+    public float bounciness;
 
 
     [Header("Marble Appearance")]

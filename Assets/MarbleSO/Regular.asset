@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MarbleSO
   marbleName: PatientZero
   marbleDescription: The First
-  speed: 50
-  acceleration: 45
+  speed: 5
+  acceleration: 6
   handling: 50
   health: 0
   weight: 50
+  bounciness: 7
   marbleMaterial: {fileID: 2100000, guid: 567b96b8ba2f81a4e89592063e75b7f4, type: 2}

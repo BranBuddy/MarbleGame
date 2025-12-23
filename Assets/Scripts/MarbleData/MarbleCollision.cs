@@ -8,6 +8,9 @@ public class MarbleCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        var thisMarbleMovement = GetComponent<MarbleMovement>();
+        var otherMarbleMovement = collision.gameObject.GetComponent<MarbleMovement>();
+
         Rigidbody otherRb = collision.rigidbody;
         Rigidbody thisRb = GetComponent<Rigidbody>();
 
@@ -33,10 +36,17 @@ public class MarbleCollision : MonoBehaviour
         float j = (1f + e) * closingSpeed / denom;
         Vector3 impulse = normal * j;
 
-        thisRb.AddForce(-impulse, ForceMode.Impulse);
+        thisRb.AddForce((-impulse * otherRb.mass / thisRb.mass) * thisMarbleMovement.bounciness, ForceMode.Impulse);
 
         if (collision.gameObject.CompareTag("Marble"))
-            otherRb.AddForce(impulse, ForceMode.Impulse);
-        
+            otherRb.AddForce((impulse * thisRb.mass / otherRb.mass) * thisMarbleMovement.bounciness, ForceMode.Impulse);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("DeathZone"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd919d1268e58d843954149ddcc2c105, type: 3}
-  m_Name: Light
+  m_Name: Bouncy
   m_EditorClassIdentifier: Assembly-CSharp::MarbleSO
-  marbleName: Light
-  marbleDescription: Light
-  speed: 2
-  acceleration: 10
-  handling: 55
+  marbleName: Bouncy
+  marbleDescription: 
+  speed: 1.5
+  acceleration: 4
+  handling: 5
   health: 0
-  weight: 20
-  bounciness: 10
-  marbleMaterial: {fileID: 2100000, guid: a30afc617c5ca014c873894e8406a31f, type: 2}
+  weight: 14
+  bounciness: 20
+  marbleMaterial: {fileID: 2100000, guid: 46edb48db4f014546bbb92850fd9af8d, type: 2}

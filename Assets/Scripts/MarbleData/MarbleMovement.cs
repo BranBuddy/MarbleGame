@@ -5,11 +5,13 @@ using UnityEngine;
 public class MarbleMovement : MonoBehaviour
 {
     [Tooltip("Maximum speed in m/s")]
-    [SerializeField] private float speed = 10f;
+    [SerializeField] internal float speed;
     [Tooltip("Acceleration applied along forward when steering is active")]
-    [SerializeField] private float acceleration = 5f;
+    [SerializeField] internal float acceleration;
     [Tooltip("Turn rate in degrees per second")]
-    [SerializeField] private float handling = 90f;
+    [SerializeField] internal float handling;
+    [Tooltip("Bounciness of the marble")]
+    [SerializeField] internal float bounciness;
     [Tooltip("Air density in kg/m³ (set low to reduce drag)")]
     [SerializeField] private float airDensity = 0.02f;
     [Tooltip("Drag coefficient (0.47 for sphere)")]
@@ -58,6 +60,7 @@ public class MarbleMovement : MonoBehaviour
         acceleration = marbleData.acceleration;
         handling = marbleData.handling;
         health = marbleData.health;
+        bounciness = marbleData.bounciness;
 
         Renderer renderer = GetComponent<Renderer>();
         if (renderer != null && marbleData.marbleMaterial != null)
@@ -97,6 +100,16 @@ public class MarbleMovement : MonoBehaviour
                 rb.AddForce(transform.forward * effAccel, ForceMode.Force);
             else
                 rb.AddForce(transform.forward * effAccel, ForceMode.Acceleration);
+        }
+
+        // Continuously maintain forward momentum if moving below speed cap
+        if (velocityMag > 0.01f && velocityMag < effSpeed)
+        {
+            float speedDeficit = effSpeed - velocityMag;
+            if (thrustUsesMass)
+                rb.AddForce(rb.linearVelocity.normalized * speedDeficit * 10f, ForceMode.Force);
+            else
+                rb.AddForce(rb.linearVelocity.normalized * speedDeficit * 10f, ForceMode.Acceleration);
         }
 
         if (enforceSpeedCap && rb.linearVelocity.magnitude > effSpeed)
