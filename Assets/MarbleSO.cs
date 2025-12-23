@@ -1,0 +1,21 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Marble", menuName = "CreateCharacter/Marble", order = 1)]
+public class MarbleSO : ScriptableObject
+{
+    [Header("Marble Info")]
+    public string marbleName;
+    public string marbleDescription;
+
+    [Header("Marble Stats")]
+    public float speed;
+    public float acceleration;
+    public float handling;
+    public float health;
+    public float weight;
+
+
+    [Header("Marble Appearance")]
+    public Material marbleMaterial;
+    
+}
