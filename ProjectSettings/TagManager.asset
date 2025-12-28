@@ -7,6 +7,7 @@ TagManager:
   - Marble
   - Wall
   - DeathZone
+  - PlacementBoard
   layers:
   - Default
   - TransparentFX
