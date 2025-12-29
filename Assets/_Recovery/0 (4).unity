@@ -7524,16 +7524,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea306ba549311f4ca2944c02ad9dbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropdownLinker
-  numberOfPlayersDropdown: {fileID: 1763481051}
   dropdownPlayer1: {fileID: 800453609}
   dropdownPlayer2: {fileID: 969232365}
   dropdownPlayer3: {fileID: 1979225663}
   dropdownPlayer4: {fileID: 67440831}
-  playerImages:
-  - {fileID: 1683460233}
-  - {fileID: 617738936}
-  - {fileID: 1577025409}
-  - {fileID: 947518377}
   allowDuplicateSelections: 1
 --- !u!114 &306172622
 MonoBehaviour:
@@ -8312,7 +8306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraSwapper
   cameras: []
-  currentCameraIndex: 0
   leftSwapButton: {fileID: 1390752695}
   rightSwapButton: {fileID: 718171257}
   nowViewingText: {fileID: 8969247194766697491}
@@ -60795,13 +60788,16 @@ MonoBehaviour:
     m_Options:
     - m_Text: 2
       m_Image: {fileID: 0}
-      m_Color: {r: 0, g: 0, b: 0, a: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: 3
       m_Image: {fileID: 0}
-      m_Color: {r: 0, g: 0, b: 0, a: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
     - m_Text: 4
       m_Image: {fileID: 0}
-      m_Color: {r: 0, g: 0, b: 0, a: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: 4
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

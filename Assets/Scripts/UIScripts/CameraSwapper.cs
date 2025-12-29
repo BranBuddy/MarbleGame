@@ -10,27 +10,47 @@ using UnityEngine.UI;
 public class CameraSwapper : MonoBehaviour
 {
     [SerializeField] private List<CinemachineCamera> cameras;
-    private int currentCameraIndex = 0;
+    [SerializeField] private int currentCameraIndex = 0;
     [SerializeField] private Button leftSwapButton;
     [SerializeField] private Button rightSwapButton;
     [SerializeField] private TMP_Text nowViewingText;
 
     public void InitializeCameraList()
     {
-        cameras = new List<CinemachineCamera>(GetComponentsInChildren<CinemachineCamera>());
+        cameras = new List<CinemachineCamera>();
 
-        foreach(var marbles in StartLineManager.Instance.availableMarbles)
+        var foundHere = GetComponentsInChildren<CinemachineCamera>(true);
+        if (foundHere != null && foundHere.Length > 0)
         {
-            var cam = marbles.GetComponentInChildren<CinemachineCamera>();
-            if(cam != null && !cameras.Contains(cam))
+            cameras.AddRange(foundHere);
+        }
+
+        foreach (var marble in StartLineManager.Instance.availableMarbles)
+        {
+            var cam = marble.GetComponentInChildren<CinemachineCamera>(true);
+            if (cam != null && !cameras.Contains(cam))
             {
                 cameras.Add(cam);
-                cam.Priority = 0;
             }
         }
 
-        cameras[0].Priority = 10; // Set initial camera priority
-        nowViewingText.text = "Now Viewing: " + CleanName(StartLineManager.Instance.availableMarbles[0].name);
+        if (cameras.Count == 0)
+        {
+            Debug.LogWarning("CameraSwapper.InitializeCameraList: No CinemachineCamera found. Ensure cameras exist and are not of a different Cinemachine version.");
+            return;
+        }
+
+        for (int i = 0; i < cameras.Count; i++)
+        {
+            cameras[i].Priority = 0;
+        }
+
+        currentCameraIndex = 0;
+        cameras[currentCameraIndex].Priority = 10; // Set initial camera priority
+        if (StartLineManager.Instance.availableMarbles != null && StartLineManager.Instance.availableMarbles.Count > 0)
+        {
+            nowViewingText.text = "Now Viewing: " + CleanName(StartLineManager.Instance.availableMarbles[0].name);
+        }
     }
 
     // Remove common Unity cloning suffixes for display

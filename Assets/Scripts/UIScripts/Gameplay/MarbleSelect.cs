@@ -22,14 +22,15 @@ public class MarbleSelect : MonoBehaviour
     {
        foreach(var marbleName in dropdownLinker.GetSelectedMarbles())
        {
-            GameObject marble = StartLineManager.Instance.poolOfMarbles.Find(m => m.name == marbleName);
-            
-            if(marble != null)
+            GameObject prefab = StartLineManager.Instance.poolOfMarbles.Find(m => m.name == marbleName);
+
+            if (prefab != null)
             {
-                StartLineManager.Instance.availableMarbles.Add(marble);
+                GameObject clone = Instantiate(prefab);
+                StartLineManager.Instance.availableMarbles.Add(clone);
             }
        }
 
-         StartLineManager.Instance.PlaceMarblesAtStartLine();
+        StartLineManager.Instance.PlaceMarblesAtStartLine();
     }
 }

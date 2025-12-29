@@ -5,14 +5,20 @@ using System.Collections.Generic;
 
 public class DropdownLinker : MonoBehaviour
 {
+    [SerializeField] private TMP_Dropdown numberOfPlayersDropdown;
+
     [SerializeField] private TMP_Dropdown dropdownPlayer1;
     [SerializeField] private TMP_Dropdown dropdownPlayer2;
     [SerializeField] private TMP_Dropdown dropdownPlayer3;
     [SerializeField] private TMP_Dropdown dropdownPlayer4;
 
+    [SerializeField] private List<Image> playerImages;
+
     [SerializeField] private bool allowDuplicateSelections = false;
 
     private List<string> marbleOptions;
+
+    private List<int> noOfPlayersOptions;
     private bool isUpdating = false; // Prevents infinite loop
 
     private void Start()
@@ -23,6 +29,11 @@ public class DropdownLinker : MonoBehaviour
     private void InitializeDropdowns()
     {
         marbleOptions = StartLineManager.Instance.poolOfMarbles.ConvertAll(marble => marble.name);
+
+        noOfPlayersOptions = new List<int> { 1, 2, 3, 4 };
+
+        numberOfPlayersDropdown.ClearOptions();
+        numberOfPlayersDropdown.AddOptions(noOfPlayersOptions.ConvertAll(i => i.ToString()));
 
         List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown> { dropdownPlayer1, dropdownPlayer2, dropdownPlayer3, dropdownPlayer4 };
 
@@ -41,8 +52,12 @@ public class DropdownLinker : MonoBehaviour
             dropdown.onValueChanged.AddListener(delegate { OnDropdownValueChanged(); });
         }
         
+        // Setup numberOfPlayersDropdown listener
+        numberOfPlayersDropdown.onValueChanged.AddListener(delegate { UpdatePlayerDropdownsVisibility(); });
+        
         // Update all dropdowns to reflect the different selections
         OnDropdownValueChanged();
+        UpdatePlayerDropdownsVisibility();
     }
 
     private void OnDropdownValueChanged()
@@ -72,7 +87,33 @@ public class DropdownLinker : MonoBehaviour
         PopulateDropdown(dropdownPlayer3, availableOptionsFor3, selected3);
         PopulateDropdown(dropdownPlayer4, availableOptionsFor4, selected4);
 
+        EditNumberOfPlayersDropdown();        
+
         isUpdating = false;
+    }
+
+    private void UpdatePlayerDropdownsVisibility()
+    {
+        // Get selected number of players (value is 0-indexed, so add 1)
+        int selectedPlayers = numberOfPlayersDropdown.value + 1;
+        
+        List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown> { dropdownPlayer1, dropdownPlayer2, dropdownPlayer3, dropdownPlayer4 };
+        
+        for (int i = 0; i < dropdowns.Count; i++)
+        {
+            if (dropdowns[i] != null)
+            {
+                // Show dropdown if its index is less than selected number of players
+                bool shouldShow = i < selectedPlayers;
+                dropdowns[i].gameObject.SetActive(shouldShow);
+            }
+        }
+    }
+    
+    private void EditNumberOfPlayersDropdown()
+    {
+        List<int> availableNoOfPlayersOptions = noOfPlayersOptions.GetRange(0, Mathf.Min(marbleOptions.Count, noOfPlayersOptions.Count));
+        PopulateDropdown(numberOfPlayersDropdown, availableNoOfPlayersOptions.ConvertAll(i => i.ToString()), (numberOfPlayersDropdown.value + 1).ToString());
     }
 
     List<string> GetAvailableOptions(string currentSelection, params string[] otherSelections)
@@ -93,7 +134,9 @@ public class DropdownLinker : MonoBehaviour
 
     private void PopulateDropdown(TMP_Dropdown dropdown, List<string> options, string currentSelection)
     {
-        // Remove listener to prevent triggering during update
+        // For numberOfPlayersDropdown, preserve its listener
+        bool isNumberOfPlayersDropdown = (dropdown == numberOfPlayersDropdown);
+        
         dropdown.onValueChanged.RemoveAllListeners();
         
         dropdown.ClearOptions();
@@ -110,22 +153,30 @@ public class DropdownLinker : MonoBehaviour
         }
         dropdown.RefreshShownValue();
         
-        // Re-add listener
-        dropdown.onValueChanged.AddListener(delegate { OnDropdownValueChanged(); });
+        // Re-add appropriate listener
+        if (isNumberOfPlayersDropdown)
+        {
+            dropdown.onValueChanged.AddListener(delegate { UpdatePlayerDropdownsVisibility(); });
+        }
+        else
+        {
+            dropdown.onValueChanged.AddListener(delegate { OnDropdownValueChanged(); });
+        }
     }
     
     internal List<string> GetSelectedMarbles()
     {
         List<string> selectedMarbles = new List<string>();
+        List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown> { dropdownPlayer1, dropdownPlayer2, dropdownPlayer3, dropdownPlayer4 };
 
-        if (dropdownPlayer1.options.Count > 0)
-            selectedMarbles.Add(dropdownPlayer1.options[dropdownPlayer1.value].text);
-        if (dropdownPlayer2.options.Count > 0)
-            selectedMarbles.Add(dropdownPlayer2.options[dropdownPlayer2.value].text);
-        if (dropdownPlayer3.options.Count > 0)
-            selectedMarbles.Add(dropdownPlayer3.options[dropdownPlayer3.value].text);
-        if (dropdownPlayer4.options.Count > 0)
-            selectedMarbles.Add(dropdownPlayer4.options[dropdownPlayer4.value].text);
+        foreach (var dropdown in dropdowns)
+        {
+            // Only add if the dropdown is active (visible) and has options
+            if (dropdown.gameObject.activeSelf && dropdown.options.Count > 0)
+            {
+                selectedMarbles.Add(dropdown.options[dropdown.value].text);
+            }
+        }
 
         return selectedMarbles;
     }
