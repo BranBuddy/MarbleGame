@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &486630451608885527
+--- !u!1 &8688118468391386426
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4109182186615825683}
-  - component: {fileID: 8609831581251681671}
-  - component: {fileID: 5582331884645789678}
-  - component: {fileID: 5662695012803570342}
-  - component: {fileID: 4210664861527428983}
-  - component: {fileID: 8680623970835961251}
-  - component: {fileID: 6814111439937957046}
-  - component: {fileID: 4319212955756147100}
-  - component: {fileID: 5432633531458804335}
-  - component: {fileID: 7051605681286941559}
+  - component: {fileID: 3073991749442544256}
+  - component: {fileID: 8598870780424561623}
+  - component: {fileID: 7089554628909663153}
+  - component: {fileID: 3094184207595266358}
+  - component: {fileID: 6380480077286439672}
+  - component: {fileID: 1999719039358427328}
+  - component: {fileID: 3970300749124936159}
+  - component: {fileID: 8338704932414747683}
+  - component: {fileID: -5175133183143634090}
   m_Layer: 0
   m_Name: BigBoy
-  m_TagString: Marble
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4109182186615825683
+--- !u!4 &3073991749442544256
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.215176, y: 26.1, z: 33.290005}
+  m_LocalPosition: {x: -1457.2194, y: 123.37075, z: 860.3656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2052531594349881570}
+  - {fileID: 6011535304644498592}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8609831581251681671
+--- !u!33 &8598870780424561623
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5582331884645789678
+--- !u!23 &7089554628909663153
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -98,13 +97,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5662695012803570342
+--- !u!135 &3094184207595266358
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -119,13 +118,13 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4210664861527428983
+--- !u!54 &6380480077286439672
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -146,27 +145,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8680623970835961251
+--- !u!114 &1999719039358427328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b1196db916d6cb4abcaf324fb23b4dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e1f058b22d77b04f903bc3059d84530, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BigBoy
-  marbleDataSO: {fileID: 11400000, guid: 0c669ece5d716a44ba66a7c8d875e6ad, type: 2}
-  movement: {fileID: 6814111439937957046}
---- !u!114 &6814111439937957046
+  m_EditorClassIdentifier: Assembly-CSharp::MarbleCollision
+  bounciness: 0.6
+--- !u!114 &3970300749124936159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41bb1ece49ad5684188e677530b661b9, type: 3}
@@ -177,74 +175,60 @@ MonoBehaviour:
   handling: 0
   bounciness: 0
   airDensity: 0.02
-  dragCoefficient: 0.47
-  frontalArea: 1
-  speedMultiplier: 1
-  accelerationMultiplier: 3
+  dragCoefficient: 0.05
+  frontalArea: 0.05
+  speedMultiplier: 1.5
+  accelerationMultiplier: 1.5
   enforceSpeedCap: 0
   thrustUsesMass: 1
---- !u!114 &4319212955756147100
+--- !u!114 &8338704932414747683
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1f058b22d77b04f903bc3059d84530, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b1196db916d6cb4abcaf324fb23b4dc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MarbleCollision
-  bounciness: 1.5
---- !u!114 &5432633531458804335
+  m_EditorClassIdentifier: Assembly-CSharp::BigBoy
+  marbleDataSO: {fileID: 11400000, guid: 0c669ece5d716a44ba66a7c8d875e6ad, type: 2}
+  movement: {fileID: 3970300749124936159}
+--- !u!114 &-5175133183143634090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4132512600b8b64d8104a1d55b5a97a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MarbleController
-  target: {fileID: 0}
-  constantDirection: {x: 0, y: 0, z: 1}
-  seekTarget: 0
---- !u!114 &7051605681286941559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486630451608885527}
+  m_GameObject: {fileID: 8688118468391386426}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dde6185eb29ec547b481bd0ea144d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MarbleDebugHUD
-  worldOffset: {x: 0, y: 0.7, z: 0}
+  worldOffset: {x: 0, y: 2, z: 0}
   textColor: {r: 0, g: 0, b: 0, a: 1}
-  fontSize: 14
+  fontSize: 12
   hudFont: {fileID: 0}
   showIMGUI: 1
-  showWorldLabel: 0
+  showWorldLabel: 1
   faceCamera: 1
---- !u!1001 &3042683477465286004
+--- !u!1001 &7289222910839322934
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4109182186615825683}
+    m_TransformParent: {fileID: 3073991749442544256}
     m_Modifications:
     - target: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.899998
+      value: -9.9
       objectReference: {fileID: 0}
     - target: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.789999
+      value: 1.79
       objectReference: {fileID: 0}
     - target: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_LocalPosition.z
@@ -280,19 +264,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5683271512947092346, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_Name
-      value: CinemachineCamera
+      value: CinemachineCamera (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8294040400475417070, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
-      objectReference: {fileID: 4109182186615825683}
+      objectReference: {fileID: 3073991749442544256}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
---- !u!4 &2052531594349881570 stripped
+--- !u!4 &6011535304644498592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
-  m_PrefabInstance: {fileID: 3042683477465286004}
+  m_PrefabInstance: {fileID: 7289222910839322934}
   m_PrefabAsset: {fileID: 0}

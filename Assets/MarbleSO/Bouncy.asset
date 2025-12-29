@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MarbleSO
   marbleName: Bouncy
   marbleDescription: 
-  speed: 1.5
+  speed: 4
   acceleration: 4
   handling: 5
   health: 0

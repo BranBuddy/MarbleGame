@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7097451630049676550
+--- !u!1 &5977551849129379249
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7655505562573715912}
-  - component: {fileID: 4209292552978258928}
-  - component: {fileID: 7729249637639048897}
-  - component: {fileID: 9116329252713548252}
-  - component: {fileID: 6788169442909556197}
-  - component: {fileID: 8971374651840741203}
-  - component: {fileID: 6395448497213057630}
-  - component: {fileID: 8504184878898300195}
-  - component: {fileID: 5440086632828481683}
-  - component: {fileID: 1205438514924621464}
+  - component: {fileID: 3457935004604616514}
+  - component: {fileID: 2587171897211685218}
+  - component: {fileID: 6159542456569982984}
+  - component: {fileID: 6839909659880479038}
+  - component: {fileID: 2972173844378298178}
+  - component: {fileID: 243156702902377799}
+  - component: {fileID: 8533921152358770602}
+  - component: {fileID: 3911034762336866447}
+  - component: {fileID: -6094347108508475287}
   m_Layer: 0
   m_Name: Feather
-  m_TagString: Marble
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7655505562573715912
+--- !u!4 &3457935004604616514
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.215168, y: 26.1, z: 33.289997}
+  m_LocalPosition: {x: -1457.2194, y: 123.37075, z: 860.3656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1941435429634631985}
+  - {fileID: 3675037765087665283}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4209292552978258928
+--- !u!33 &2587171897211685218
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7729249637639048897
+--- !u!23 &6159542456569982984
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -98,13 +97,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9116329252713548252
+--- !u!135 &6839909659880479038
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -119,15 +118,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6788169442909556197
+--- !u!54 &2972173844378298178
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   serializedVersion: 5
-  m_Mass: 0.1
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -146,27 +145,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8971374651840741203
+--- !u!114 &243156702902377799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7375a7a4858c749a620663c5d28d49, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e1f058b22d77b04f903bc3059d84530, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Feather
-  marbleDataSO: {fileID: 11400000, guid: 20389c69b86be7a4bad1544844cf304a, type: 2}
-  movement: {fileID: 6395448497213057630}
---- !u!114 &6395448497213057630
+  m_EditorClassIdentifier: Assembly-CSharp::MarbleCollision
+  bounciness: 0.6
+--- !u!114 &8533921152358770602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41bb1ece49ad5684188e677530b661b9, type: 3}
@@ -177,74 +175,60 @@ MonoBehaviour:
   handling: 0
   bounciness: 0
   airDensity: 0.02
-  dragCoefficient: 0.47
-  frontalArea: 1
-  speedMultiplier: 1
-  accelerationMultiplier: 2
+  dragCoefficient: 0.05
+  frontalArea: 0.05
+  speedMultiplier: 1.5
+  accelerationMultiplier: 1.5
   enforceSpeedCap: 0
   thrustUsesMass: 1
---- !u!114 &8504184878898300195
+--- !u!114 &3911034762336866447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1f058b22d77b04f903bc3059d84530, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c7375a7a4858c749a620663c5d28d49, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MarbleCollision
-  bounciness: 1.5
---- !u!114 &5440086632828481683
+  m_EditorClassIdentifier: Assembly-CSharp::Feather
+  marbleDataSO: {fileID: 11400000, guid: 20389c69b86be7a4bad1544844cf304a, type: 2}
+  movement: {fileID: 0}
+--- !u!114 &-6094347108508475287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4132512600b8b64d8104a1d55b5a97a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MarbleController
-  target: {fileID: 0}
-  constantDirection: {x: 0, y: 0, z: 1}
-  seekTarget: 0
---- !u!114 &1205438514924621464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7097451630049676550}
+  m_GameObject: {fileID: 5977551849129379249}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dde6185eb29ec547b481bd0ea144d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MarbleDebugHUD
-  worldOffset: {x: 0, y: 0.7, z: 0}
+  worldOffset: {x: 0, y: 2, z: 0}
   textColor: {r: 0, g: 0, b: 0, a: 1}
-  fontSize: 14
+  fontSize: 12
   hudFont: {fileID: 0}
   showIMGUI: 1
-  showWorldLabel: 0
+  showWorldLabel: 1
   faceCamera: 1
---- !u!1001 &3221370199320265895
+--- !u!1001 &379882899635925269
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7655505562573715912}
+    m_TransformParent: {fileID: 3457935004604616514}
     m_Modifications:
     - target: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.899998
+      value: -9.900024
       objectReference: {fileID: 0}
     - target: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.789999
+      value: 1.7900009
       objectReference: {fileID: 0}
     - target: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_LocalPosition.z
@@ -280,19 +264,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5683271512947092346, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_Name
-      value: CinemachineCamera
+      value: CinemachineCamera (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8294040400475417070, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
-      objectReference: {fileID: 7655505562573715912}
+      objectReference: {fileID: 3457935004604616514}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
---- !u!4 &1941435429634631985 stripped
+--- !u!4 &3675037765087665283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3910749676163919254, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
-  m_PrefabInstance: {fileID: 3221370199320265895}
+  m_PrefabInstance: {fileID: 379882899635925269}
   m_PrefabAsset: {fileID: 0}

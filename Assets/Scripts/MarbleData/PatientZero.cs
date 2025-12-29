@@ -47,13 +47,13 @@ public class PatientZero : MonoBehaviour, IMarbles
         }
     }
 
-    private IEnumerator StartOfMatchDelay(float delayDuration)
+    public IEnumerator StartOfMatchDelay(float delayDuration)
     {
         yield return new WaitForSeconds(delayDuration);
         startDelayCompleted = true;
     }
 
-    private IEnumerator ResetCooldown(float cooldownDuration)
+    public IEnumerator ResetCooldown(float cooldownDuration)
     {
         yield return new WaitForSeconds(cooldownDuration);
         onCooldown = false;

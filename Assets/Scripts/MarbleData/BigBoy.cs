@@ -45,13 +45,13 @@ public class BigBoy : MonoBehaviour
         }
     }
 
-    private IEnumerator StartOfMatchDelay(float delayDuration)
+    public IEnumerator StartOfMatchDelay(float delayDuration)
     {
         yield return new WaitForSeconds(delayDuration);
         startDelayCompleted = true;
     }
 
-    private IEnumerator GrowthAbility(float growthDuration, float sizeMultiplier)
+    public IEnumerator GrowthAbility(float growthDuration, float sizeMultiplier)
     {
         if(movement == null)
             yield break;

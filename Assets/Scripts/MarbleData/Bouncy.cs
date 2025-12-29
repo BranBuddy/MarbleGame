@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(MarbleMovement))]
@@ -33,5 +34,16 @@ public class Bouncy : MonoBehaviour, IMarbles
     public void SetSteering(Vector3 dir)
     {
         movement?.SetSteering(dir);
+    }
+    public IEnumerator ResetCooldown(float cooldownDuration)
+    {
+        yield return new WaitForSeconds(cooldownDuration);
+        onCooldown = false;
+    }
+
+    public IEnumerator StartOfMatchDelay(float delayDuration)
+    {
+        yield return new WaitForSeconds(delayDuration);
+        startDelayCompleted = true;
     }
 }

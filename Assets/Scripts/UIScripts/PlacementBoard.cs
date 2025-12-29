@@ -12,12 +12,6 @@ public class PlacementBoard : MonoBehaviour
     [SerializeField] private GameObject placementBoardContent;
     private readonly List<PlacementBoardStrip> strips = new List<PlacementBoardStrip>();
 
-    private void Start()
-    {
-        InitializePlacementBoard();
-        UpdateBoardUI();
-    }
-
     private void Update()
     {
         if (turnOn)
@@ -81,7 +75,7 @@ public class PlacementBoard : MonoBehaviour
             .Select(g => g.First())
             .ToList();
     }
-    private void UpdateBoardUI()
+    public void UpdateBoardUI()
     {
         if(strips.Count == 0 || targetObject == null)
         {
