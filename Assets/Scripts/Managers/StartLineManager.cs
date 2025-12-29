@@ -10,8 +10,6 @@ public class StartLineManager : Singleton<StartLineManager>
 
     protected override void Awake()
     {
-        PlaceMarblesAtStartLine();
-
         base.Awake();
     }
 
@@ -32,7 +30,7 @@ public class StartLineManager : Singleton<StartLineManager>
         }
     }
 
-    public void PlaceMarblesAtStartLine()
+    internal void PlaceMarblesAtStartLine()
     {
         for (int i = 0; i < poolOfMarbles.Count && i < startLinePositions.Length; i++)
         {

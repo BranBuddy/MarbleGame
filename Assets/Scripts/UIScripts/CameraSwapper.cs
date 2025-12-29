@@ -15,12 +15,7 @@ public class CameraSwapper : MonoBehaviour
     [SerializeField] private Button rightSwapButton;
     [SerializeField] private TMP_Text nowViewingText;
 
-    private void Start()
-    {
-        InitializeCameraList();
-    }
-
-    private void InitializeCameraList()
+    public void InitializeCameraList()
     {
         cameras = new List<CinemachineCamera>(GetComponentsInChildren<CinemachineCamera>());
 
