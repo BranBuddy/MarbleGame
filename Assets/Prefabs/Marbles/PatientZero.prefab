@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8441893857245400906}
   m_Layer: 0
   m_Name: PatientZero
-  m_TagString: Untagged
+  m_TagString: Marble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

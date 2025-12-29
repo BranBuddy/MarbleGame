@@ -28,9 +28,23 @@ public class DropdownLinker : MonoBehaviour
 
     private void InitializeDropdowns()
     {
+        // Check if poolOfMarbles is populated
+        if (StartLineManager.Instance == null || StartLineManager.Instance.poolOfMarbles == null || StartLineManager.Instance.poolOfMarbles.Count == 0)
+        {
+            Debug.LogError("DropdownLinker: StartLineManager.poolOfMarbles is empty or not initialized!");
+            return;
+        }
+
         marbleOptions = StartLineManager.Instance.poolOfMarbles.ConvertAll(marble => marble.name);
+        Debug.Log($"DropdownLinker: Loaded {marbleOptions.Count} marble options: {string.Join(", ", marbleOptions)}");
 
         noOfPlayersOptions = new List<int> { 1, 2, 3, 4 };
+
+        if (numberOfPlayersDropdown == null)
+        {
+            Debug.LogError("DropdownLinker: numberOfPlayersDropdown is not assigned in the Inspector!");
+            return;
+        }
 
         numberOfPlayersDropdown.ClearOptions();
         numberOfPlayersDropdown.AddOptions(noOfPlayersOptions.ConvertAll(i => i.ToString()));
@@ -40,8 +54,14 @@ public class DropdownLinker : MonoBehaviour
         for (int i = 0; i < dropdowns.Count; i++)
         {
             var dropdown = dropdowns[i];
+            if (dropdown == null)
+            {
+                Debug.LogError($"DropdownLinker: dropdownPlayer{i+1} is not assigned in the Inspector!");
+                continue;
+            }
             dropdown.ClearOptions();
             dropdown.AddOptions(marbleOptions);
+            Debug.Log($"DropdownLinker: Added {marbleOptions.Count} options to dropdownPlayer{i+1}");
             
             // Set different default value for each dropdown
             if (i < marbleOptions.Count)
