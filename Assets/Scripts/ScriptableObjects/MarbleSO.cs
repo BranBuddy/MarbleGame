@@ -6,6 +6,7 @@ public class MarbleSO : ScriptableObject
     [Header("Marble Info")]
     public string marbleName;
     public string marbleDescription;
+    public bool isUnlocked;
 
     [Header("Marble Stats")]
     public float speed;

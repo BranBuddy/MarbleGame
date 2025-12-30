@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IMarbles
 {
+    public bool isUnlocked {get; set;}
     public bool isGameOver {get; set;}
     public MarbleSO marbleData {get; set;}
     public Rigidbody rb {get; set;}

@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(MarbleMovement))]
 public class Bouncy : MonoBehaviour, IMarbles
 {
+    public bool isUnlocked { get; set; }
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
     public bool isGameOver { get; set; }
@@ -30,6 +31,11 @@ public class Bouncy : MonoBehaviour, IMarbles
         if (marbleData != null && movement != null)
             movement.ApplyMarbleData(marbleData);
 
+    }
+    public bool AmIUnlocked()
+    {
+        StartLineManager.Instance.poolOfMarbles.TryGetValue(this.gameObject, out bool unlockedStatus);
+        return unlockedStatus;
     }
 
     public void SetSteering(Vector3 dir)

@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(MarbleMovement))]
 public class BigBoy : MonoBehaviour, IMarbles
 {
+    public bool isUnlocked { get; set; }
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
     public bool isGameOver { get; set; }
@@ -44,6 +45,12 @@ public class BigBoy : MonoBehaviour, IMarbles
             onCooldown = true;
             StartCoroutine(ResetCooldown(Random.Range(10.0f, 15.0f)));
         }
+    }
+
+    public bool AmIUnlocked()
+    {
+        StartLineManager.Instance.poolOfMarbles.TryGetValue(this.gameObject, out bool unlockedStatus);
+        return unlockedStatus;
     }
 
     public IEnumerator StartOfMatchDelay(float delayDuration)

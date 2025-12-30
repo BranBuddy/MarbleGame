@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 public class DropdownLinker : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class DropdownLinker : MonoBehaviour
 
     private void InitializeDropdowns()
     {
+        // Make sure start-line data is initialized before we read it.
+        if (StartLineManager.Instance != null)
+        {
+            StartLineManager.Instance.EnsurePoolsInitialized();
+        }
+
         // Check if poolOfMarbles is populated
         if (StartLineManager.Instance == null || StartLineManager.Instance.poolOfMarbles == null || StartLineManager.Instance.poolOfMarbles.Count == 0)
         {
@@ -35,7 +42,22 @@ public class DropdownLinker : MonoBehaviour
             return;
         }
 
-        marbleOptions = StartLineManager.Instance.poolOfMarbles.ConvertAll(marble => marble.name);
+        // Only use unlocked marbles (pool entries marked true) for dropdown options.
+        var sourceUnlocked = StartLineManager.Instance.unlockedMarbles ?? new List<GameObject>();
+        if (sourceUnlocked.Count == 0)
+        {
+            sourceUnlocked = StartLineManager.Instance.poolOfMarbles
+                .Where(kvp => kvp.Value && kvp.Key != null)
+                .Select(kvp => kvp.Key)
+                .ToList();
+        }
+
+        marbleOptions = sourceUnlocked
+            .Where(go => go != null)
+            .Select(go => go.name)
+            .Where(n => !string.IsNullOrEmpty(n))
+            .Distinct()
+            .ToList();
         Debug.Log($"DropdownLinker: Loaded {marbleOptions.Count} marble options: {string.Join(", ", marbleOptions)}");
 
         noOfPlayersOptions = new List<int> { 1, 2, 3, 4 };
@@ -47,7 +69,7 @@ public class DropdownLinker : MonoBehaviour
         }
 
         numberOfPlayersDropdown.ClearOptions();
-        numberOfPlayersDropdown.AddOptions(noOfPlayersOptions.ConvertAll(i => i.ToString()));
+        numberOfPlayersDropdown.AddOptions(noOfPlayersOptions.Select(i => i.ToString()).ToList());
 
         List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown> { dropdownPlayer1, dropdownPlayer2, dropdownPlayer3, dropdownPlayer4 };
 

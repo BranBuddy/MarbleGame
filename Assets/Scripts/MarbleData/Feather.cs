@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(MarbleMovement))]
 public class Feather : MonoBehaviour, IMarbles
 {
+    public bool isUnlocked { get; set; }
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
     public bool isGameOver { get; set; }
@@ -44,6 +45,12 @@ public class Feather : MonoBehaviour, IMarbles
     public void SetSteering(Vector3 dir)
     {
         movement?.SetSteering(dir);
+    }
+
+    public bool AmIUnlocked()
+    {
+        StartLineManager.Instance.poolOfMarbles.TryGetValue(this.gameObject, out bool unlockedStatus);
+        return unlockedStatus;
     }
 
     public IEnumerator StartOfMatchDelay(float delayDuration)

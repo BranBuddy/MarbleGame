@@ -684,6 +684,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2087845457}
+        m_TargetAssemblyTypeName: DataPersistenceManager, Assembly-CSharp
+        m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &53733486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9210,12 +9222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f986240aa5b1c84cbdad0af7fcb5e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartLineManager
-  poolOfMarbles:
-  - {fileID: 8688118468391386426, guid: d796c761e81742e459a9e57b36ccad79, type: 3}
-  - {fileID: 8291423856542891452, guid: 4b5f218347f33c248bb2fdb0a29b9650, type: 3}
-  - {fileID: 5977551849129379249, guid: 1c2070c8b6ba9864dba0f3ea793edeed, type: 3}
-  - {fileID: 7115120162249866415, guid: 4b8130e159b634b4cad074f3be7e69b9, type: 3}
-  - {fileID: 5341599943993479547, guid: 942e7ade9f6858546b1bb79c81bf65d2, type: 3}
+  unlockedMarbles: []
   availableMarbles: []
   startLinePositions:
   - {fileID: 920897273}
@@ -109051,6 +109058,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082943378}
   m_CullTransparentMesh: 1
+--- !u!1 &2087845456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2087845458}
+  - component: {fileID: 2087845457}
+  m_Layer: 0
+  m_Name: DataPersistenceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2087845457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087845456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336ba629ce700b9468af6d7c3e50a059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataPersistenceManager
+--- !u!4 &2087845458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087845456}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 434.97455, y: -0.00001, z: 3896.495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092191104
 GameObject:
   m_ObjectHideFlags: 0
@@ -111095,3 +111146,4 @@ SceneRoots:
   - {fileID: 1095320781}
   - {fileID: 2092191110}
   - {fileID: 492994531}
+  - {fileID: 2087845458}

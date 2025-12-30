@@ -9,7 +9,7 @@ using UnityEngine;
 /// Manages the gambling/betting UI screen for the marble game.
 /// Handles bet placement, gold tracking, multiplier calculations, and reward display.
 /// </summary>
-public class GamblingScreen : MonoBehaviour
+public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
 {
     private string input;
     [SerializeField] internal float goldAmount;
@@ -21,10 +21,14 @@ public class GamblingScreen : MonoBehaviour
     private float highestBetRewardValue = 0.0f;
     internal float betMultiplierValue = 2.0f;
 
-
-    void Start()
+    public void SaveData(GameData data)
     {
-        
+        data.playerGold = Mathf.FloorToInt(goldAmount);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.goldAmount = data.playerGold;
     }
 
     // Update is called once per frame
@@ -93,7 +97,7 @@ public class GamblingScreen : MonoBehaviour
         }
 
         highestBetRewardValue = maxBet * betMultiplierValue;
-        highestBetRewardText.text = highestBetRewardValue.ToString();
+        highestBetRewardText.text = highestBetRewardValue.ToString("0.##");
     }
 
     /// <summary>
@@ -117,7 +121,24 @@ public class GamblingScreen : MonoBehaviour
         Debug.Log("Total Unique Bets: " + totalUniqueBets);
 
         UniqueBetTable(totalUniqueBets);
-        betMultiplierText.text = betMultiplierValue.ToString() + "x";
+        int availableMarbles = StartLineManager.Instance.availableMarbles.Count;
+
+        if (availableMarbles <= 0)
+        {
+            betMultiplierText.text = betMultiplierValue.ToString("0.##") + "x";
+            return;
+        }
+
+        // More competition (more available marbles left unpicked) boosts multiplier;
+        // spreading bets out (higher unique count) reduces it.
+        float competitionBonus = 1f + Mathf.Max(0, availableMarbles - totalUniqueBets) / (float)availableMarbles;
+        betMultiplierValue *= competitionBonus;
+
+        // Cap the multiplier to the player/marble count (e.g., 2 players => max 2x, 3 players => max 3x).
+        betMultiplierValue = Mathf.Min(betMultiplierValue, availableMarbles);
+
+        betMultiplierText.text = betMultiplierValue.ToString("0.##") + "x";
+
 
     }
 

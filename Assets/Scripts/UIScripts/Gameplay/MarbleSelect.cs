@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Linq;
 
 public class MarbleSelect : MonoBehaviour
 {
@@ -25,7 +26,9 @@ public class MarbleSelect : MonoBehaviour
     {
        foreach(var marbleName in dropdownLinker.GetSelectedMarbles())
        {
-            GameObject prefab = StartLineManager.Instance.poolOfMarbles.Find(m => m.name == marbleName);
+            var match = StartLineManager.Instance.poolOfMarbles
+                .FirstOrDefault(pair => pair.Key != null && pair.Key.name == marbleName);
+            GameObject prefab = match.Key;
 
             if (prefab != null)
             {

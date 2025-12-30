@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MarbleSO
   marbleName: Wizard
   marbleDescription: 
+  isUnlocked: 0
   speed: 6
   acceleration: 6
   handling: 60
