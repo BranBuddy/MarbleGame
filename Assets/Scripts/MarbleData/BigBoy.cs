@@ -3,10 +3,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(MarbleMovement))]
-public class BigBoy : MonoBehaviour
+public class BigBoy : MonoBehaviour, IMarbles
 {
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
+    public bool isGameOver { get; set; }
 
     [SerializeField] private MarbleSO marbleDataSO;
     [SerializeField] private MarbleMovement movement;
@@ -37,7 +38,7 @@ public class BigBoy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!onCooldown && startDelayCompleted)
+        if(!onCooldown && startDelayCompleted && !isGameOver)
         {
             StartCoroutine(GrowthAbility(5.0f, 1.5f));
             onCooldown = true;
@@ -73,7 +74,7 @@ public class BigBoy : MonoBehaviour
         rb.mass = originalMass;
     }
 
-    private IEnumerator ResetCooldown(float cooldownDuration)
+    public IEnumerator ResetCooldown(float cooldownDuration)
     {
         yield return new WaitForSeconds(cooldownDuration);
         onCooldown = false;

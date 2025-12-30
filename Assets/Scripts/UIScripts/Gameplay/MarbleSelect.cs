@@ -1,10 +1,13 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MarbleSelect : MonoBehaviour
 {
     [SerializeField] private GameObject selectMarbleScreen;
     [SerializeField] private DropdownLinker dropdownLinker;
+    [SerializeField] private GameObject playerInformationPrefab;
+    [SerializeField] private GameObject playerInformationContent;
 
     public void Start()
     {
@@ -32,5 +35,11 @@ public class MarbleSelect : MonoBehaviour
        }
 
         StartLineManager.Instance.PlaceMarblesAtStartLine();
+        Time.timeScale = 0;
+
+        for(int i = 0; i < StartLineManager.Instance.availableMarbles.Count; i++)
+        {
+            GameObject playerInfoEntry = Instantiate(playerInformationPrefab, playerInformationContent.transform);
+        }
     }
 }

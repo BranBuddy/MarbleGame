@@ -7,6 +7,7 @@ public class Wizard : MonoBehaviour, IMarbles
 {
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
+    public bool isGameOver { get; set; }
 
     [SerializeField] private MarbleSO marbleDataSO;
     [SerializeField] private MarbleMovement movement;
@@ -31,7 +32,7 @@ public class Wizard : MonoBehaviour, IMarbles
 
     void FixedUpdate()
     {
-        if(!onCooldown && startDelayCompleted)
+        if(!onCooldown && startDelayCompleted && !isGameOver)
         {
             StartCoroutine(TeleportAbility(20f));
             onCooldown = true;

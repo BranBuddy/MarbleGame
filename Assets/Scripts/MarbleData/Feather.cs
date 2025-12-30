@@ -3,10 +3,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(MarbleMovement))]
-public class Feather : MonoBehaviour
+public class Feather : MonoBehaviour, IMarbles
 {
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
+    public bool isGameOver { get; set; }
 
     [SerializeField] private MarbleSO marbleDataSO;
     [SerializeField] private MarbleMovement movement;
@@ -32,7 +33,7 @@ public class Feather : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!onCooldown && startDelayCompleted)
+        if(!onCooldown && startDelayCompleted && !isGameOver)
         {
             StartCoroutine(DashAbility(2.0f, marbleData.speed * 10f));
             onCooldown = true;
@@ -45,7 +46,7 @@ public class Feather : MonoBehaviour
         movement?.SetSteering(dir);
     }
 
-    private IEnumerator StartOfMatchDelay(float delayDuration)
+    public IEnumerator StartOfMatchDelay(float delayDuration)
     {
         yield return new WaitForSeconds(delayDuration);
         startDelayCompleted = true;
@@ -73,7 +74,7 @@ public class Feather : MonoBehaviour
         Debug.Log("Dash Ended. Speed reset to: " + movement.speed);
     }
 
-    private IEnumerator ResetCooldown(float cooldownDuration)
+    public IEnumerator ResetCooldown(float cooldownDuration)
     {
         yield return new WaitForSeconds(cooldownDuration);
         onCooldown = false;

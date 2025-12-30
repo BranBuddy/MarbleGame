@@ -8,6 +8,7 @@ public class PatientZero : MonoBehaviour, IMarbles
 {
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
+    public bool isGameOver { get; set; }
 
     [SerializeField] private MarbleSO marbleDataSO;
     [SerializeField] private MarbleMovement movement;
@@ -39,7 +40,7 @@ public class PatientZero : MonoBehaviour, IMarbles
     }
     private void FixedUpdate()
     {
-        if(!onCooldown && startDelayCompleted)
+        if(!onCooldown && startDelayCompleted && !isGameOver)
         {
             StartCoroutine(SideStepAbility(.1f, 10));
             onCooldown = true;

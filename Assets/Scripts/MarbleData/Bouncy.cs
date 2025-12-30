@@ -7,6 +7,7 @@ public class Bouncy : MonoBehaviour, IMarbles
 {
     public MarbleSO marbleData { get; set; }
     public Rigidbody rb { get; set; }
+    public bool isGameOver { get; set; }
 
     [SerializeField] private MarbleSO marbleDataSO;
     [SerializeField] private MarbleMovement movement;
