@@ -26,21 +26,21 @@ public class MarbleSelect : MonoBehaviour
     {
        foreach(var marbleName in dropdownLinker.GetSelectedMarbles())
        {
-            var match = StartLineManager.Instance.poolOfMarbles
+            var match = MarbleManager.Instance.poolOfMarbles
                 .FirstOrDefault(pair => pair.Key != null && pair.Key.name == marbleName);
             GameObject prefab = match.Key;
 
             if (prefab != null)
             {
                 GameObject clone = Instantiate(prefab);
-                StartLineManager.Instance.availableMarbles.Add(clone);
+                MarbleManager.Instance.availableMarbles.Add(clone);
             }
        }
 
-        StartLineManager.Instance.PlaceMarblesAtStartLine();
+        MarbleManager.Instance.PlaceMarblesAtStartLine();
         Time.timeScale = 0;
 
-        for(int i = 0; i < StartLineManager.Instance.availableMarbles.Count; i++)
+        for(int i = 0; i < MarbleManager.Instance.availableMarbles.Count; i++)
         {
             GameObject playerInfoEntry = Instantiate(playerInformationPrefab, playerInformationContent.transform);
         }

@@ -82,7 +82,7 @@ public class ResetGame : MonoBehaviour
         Debug.Log("OnResetGameButtonPressed called");
 
         // Clear marble data and bets
-        StartLineManager.Instance.availableMarbles.Clear();
+        MarbleManager.Instance.availableMarbles.Clear();
         
         // Destroy all marbles and betting UI elements
         DestroyAllMarbles();

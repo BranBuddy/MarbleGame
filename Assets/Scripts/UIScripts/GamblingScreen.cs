@@ -121,7 +121,7 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
         Debug.Log("Total Unique Bets: " + totalUniqueBets);
 
         UniqueBetTable(totalUniqueBets);
-        int availableMarbles = StartLineManager.Instance.availableMarbles.Count;
+        int availableMarbles = MarbleManager.Instance.availableMarbles.Count;
 
         if (availableMarbles <= 0)
         {
@@ -193,9 +193,9 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
         }
         else
         {
-            for (int i = 0; i < StartLineManager.Instance.availableMarbles.Count; i++)
+            for (int i = 0; i < MarbleManager.Instance.availableMarbles.Count; i++)
             {
-                selectedNames.Add(StartLineManager.Instance.availableMarbles[i].name);
+                selectedNames.Add(MarbleManager.Instance.availableMarbles[i].name);
             }
         }
 

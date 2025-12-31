@@ -31,7 +31,7 @@ public class PlacementBoard : MonoBehaviour
         // Avoid re-initializing if already set up
         if (strips.Count > 0) return;
 
-        var source = StartLineManager.Instance != null ? StartLineManager.Instance.availableMarbles : null;
+        var source = MarbleManager.Instance != null ? MarbleManager.Instance.availableMarbles : null;
         if (source == null) return;
 
         // Ensure unique marbles before creating strips
@@ -50,7 +50,7 @@ public class PlacementBoard : MonoBehaviour
 
     public List<GameObject> GetSortedMarbles()
     {
-        if (targetObject == null || StartLineManager.Instance == null || StartLineManager.Instance.availableMarbles == null)
+        if (targetObject == null || MarbleManager.Instance == null || MarbleManager.Instance.availableMarbles == null)
         {
             Debug.LogWarning("PlacementBoard: Cannot get sorted marbles because targetObject or availableMarbles is null.");
             return new List<GameObject>();
@@ -63,7 +63,7 @@ public class PlacementBoard : MonoBehaviour
             return name.Replace(" (Clone)", "").Replace("(Clone)", "").Trim();
         }
 
-        return StartLineManager.Instance.availableMarbles
+        return MarbleManager.Instance.availableMarbles
             .Where(m => m != null)
             .OrderBy(marble =>
             {

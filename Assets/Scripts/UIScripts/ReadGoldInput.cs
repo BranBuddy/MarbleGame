@@ -37,17 +37,30 @@ public class ReadGoldInput : MonoBehaviour
         playerGoldBetInput = input;
         Debug.Log("Player Gold Bet Input: " + playerGoldBetInput);
 
-        if(gamblingScreen.goldAmount >= int.Parse(playerGoldBetInput))
+        if (!int.TryParse(playerGoldBetInput, out var betAmount) || betAmount < 0)
         {
-            gamblingScreen.goldAmount -= int.Parse(playerGoldBetInput);
+            Debug.LogWarning($"ReadGoldInput: Invalid bet input '{playerGoldBetInput}'. Expected a non-negative integer.");
+            insufficientGoldWarningImage.gameObject.SetActive(true);
+            return;
+        }
+
+        if (gamblingScreen == null)
+        {
+            Debug.LogWarning("ReadGoldInput: GamblingScreen reference missing; cannot process bet.");
+            insufficientGoldWarningImage.gameObject.SetActive(true);
+            return;
+        }
+
+        if (gamblingScreen.goldAmount >= betAmount)
+        {
+            gamblingScreen.goldAmount -= betAmount;
             insufficientGoldWarningImage.gameObject.SetActive(false);
 
-            var betAmountToInt = int.Parse(playerGoldBetInput);
-            BetAmountValue += betAmountToInt;
+            BetAmountValue += betAmount;
             BetAmountText.text = BetAmountValue.ToString();
 
             uniqueBet = true;
-        } 
+        }
         else
         {
             insufficientGoldWarningImage.gameObject.SetActive(true);

@@ -51,7 +51,7 @@ public class PatientZero : MonoBehaviour, IMarbles
 
     public bool AmIUnlocked()
     {
-        StartLineManager.Instance.poolOfMarbles.TryGetValue(this.gameObject, out bool unlockedStatus);
+        MarbleManager.Instance.poolOfMarbles.TryGetValue(this.gameObject, out bool unlockedStatus);
         return unlockedStatus;
     }
 

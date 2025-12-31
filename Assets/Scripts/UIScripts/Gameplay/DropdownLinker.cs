@@ -30,23 +30,23 @@ public class DropdownLinker : MonoBehaviour
     private void InitializeDropdowns()
     {
         // Make sure start-line data is initialized before we read it.
-        if (StartLineManager.Instance != null)
+        if (MarbleManager.Instance != null)
         {
-            StartLineManager.Instance.EnsurePoolsInitialized();
+            MarbleManager.Instance.EnsurePoolsInitialized();
         }
 
         // Check if poolOfMarbles is populated
-        if (StartLineManager.Instance == null || StartLineManager.Instance.poolOfMarbles == null || StartLineManager.Instance.poolOfMarbles.Count == 0)
+        if (MarbleManager.Instance == null || MarbleManager.Instance.poolOfMarbles == null || MarbleManager.Instance.poolOfMarbles.Count == 0)
         {
             Debug.LogError("DropdownLinker: StartLineManager.poolOfMarbles is empty or not initialized!");
             return;
         }
 
         // Only use unlocked marbles (pool entries marked true) for dropdown options.
-        var sourceUnlocked = StartLineManager.Instance.unlockedMarbles ?? new List<GameObject>();
+        var sourceUnlocked = MarbleManager.Instance.unlockedMarbles ?? new List<GameObject>();
         if (sourceUnlocked.Count == 0)
         {
-            sourceUnlocked = StartLineManager.Instance.poolOfMarbles
+            sourceUnlocked = MarbleManager.Instance.poolOfMarbles
                 .Where(kvp => kvp.Value && kvp.Key != null)
                 .Select(kvp => kvp.Key)
                 .ToList();

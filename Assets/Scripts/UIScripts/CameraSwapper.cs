@@ -25,7 +25,7 @@ public class CameraSwapper : MonoBehaviour
             cameras.AddRange(foundHere);
         }
 
-        foreach (var marble in StartLineManager.Instance.availableMarbles)
+        foreach (var marble in MarbleManager.Instance.availableMarbles)
         {
             var cam = marble.GetComponentInChildren<CinemachineCamera>(true);
             if (cam != null && !cameras.Contains(cam))
@@ -47,9 +47,9 @@ public class CameraSwapper : MonoBehaviour
 
         currentCameraIndex = 0;
         cameras[currentCameraIndex].Priority = 10; // Set initial camera priority
-        if (StartLineManager.Instance.availableMarbles != null && StartLineManager.Instance.availableMarbles.Count > 0)
+        if (MarbleManager.Instance.availableMarbles != null && MarbleManager.Instance.availableMarbles.Count > 0)
         {
-            nowViewingText.text = "Now Viewing: " + CleanName(StartLineManager.Instance.availableMarbles[0].name);
+            nowViewingText.text = "Now Viewing: " + CleanName(MarbleManager.Instance.availableMarbles[0].name);
         }
     }
 
@@ -71,7 +71,7 @@ public class CameraSwapper : MonoBehaviour
         cameras[index].Priority = 10;
         currentCameraIndex = index;
 
-        nowViewingText.text = "Now Viewing: " + CleanName(StartLineManager.Instance.availableMarbles[currentCameraIndex].name);
+        nowViewingText.text = "Now Viewing: " + CleanName(MarbleManager.Instance.availableMarbles[currentCameraIndex].name);
     }
 
     public void RightSwapCamera(int index)
@@ -85,6 +85,6 @@ public class CameraSwapper : MonoBehaviour
         cameras[index].Priority = 10;
         currentCameraIndex = index;
 
-        nowViewingText.text = "Now Viewing: " + CleanName(StartLineManager.Instance.availableMarbles[currentCameraIndex].name);
+        nowViewingText.text = "Now Viewing: " + CleanName(MarbleManager.Instance.availableMarbles[currentCameraIndex].name);
     }
 }
