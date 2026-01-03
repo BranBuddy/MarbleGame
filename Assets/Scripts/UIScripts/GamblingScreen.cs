@@ -12,7 +12,6 @@ using UnityEngine;
 public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
 {
     private string input;
-    [SerializeField] internal float goldAmount;
     [SerializeField] private TMP_Text goldAmountText;
     [SerializeField] private GameObject bettingContent;
     [SerializeField] private DropdownLinker dropdownLinker;
@@ -23,18 +22,18 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
 
     public void SaveData(GameData data)
     {
-        data.playerGold = Mathf.FloorToInt(goldAmount);
+        data.playerGold = Mathf.FloorToInt(PlayerInventoryManager.Instance.goldAmount);
     }
 
     public void LoadData(GameData data)
     {
-        this.goldAmount = data.playerGold;
+        PlayerInventoryManager.Instance.goldAmount = data.playerGold;
     }
 
     // Update is called once per frame
     void Update()
     {
-        goldAmountText.text = goldAmount.ToString();
+        goldAmountText.text = PlayerInventoryManager.Instance.goldAmount.ToString();
         UpdateBetMultiplier();
         HighestBetReward();
     }

@@ -85,13 +85,15 @@ public class MarbleManager : Singleton<MarbleManager>, IDataPeristenceManager
             }
         }
 
-        // If nothing ended up marked true, unlock all loaded marbles as a fallback.
+        SyncUnlocksFromInventory();
+
+        // If nothing ended up marked true and inventory has no selections, unlock all loaded marbles as a fallback.
         bool anyUnlocked = false;
         foreach (var entry in poolOfMarbles)
         {
             if (entry.Value) { anyUnlocked = true; break; }
         }
-        if (!anyUnlocked)
+        if (!anyUnlocked && !HasInventorySelections())
         {
             var keys = new List<GameObject>(poolOfMarbles.Keys);
             foreach (var key in keys)
@@ -140,5 +142,29 @@ public class MarbleManager : Singleton<MarbleManager>, IDataPeristenceManager
         }
 
         return true; // default to unlocked if no data found
+    }
+
+    /// <summary>
+    /// Marks marbles as unlocked when their prefab name appears in the player's owned item list.
+    /// </summary>
+    private void SyncUnlocksFromInventory()
+    {
+        var inventory = PlayerInventoryManager.Instance;
+        if (inventory == null || inventory.ownedItems == null) return;
+
+        foreach (var prefab in new List<GameObject>(poolOfMarbles.Keys))
+        {
+            if (prefab == null) continue;
+            if (inventory.ownedItems.Contains(prefab.name))
+            {
+                poolOfMarbles[prefab] = true;
+            }
+        }
+    }
+
+    private bool HasInventorySelections()
+    {
+        var inventory = PlayerInventoryManager.Instance;
+        return inventory != null && inventory.ownedItems != null && inventory.ownedItems.Count > 0;
     }
 }

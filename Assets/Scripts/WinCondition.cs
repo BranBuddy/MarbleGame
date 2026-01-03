@@ -101,9 +101,14 @@ public class WinCondition : MonoBehaviour
     /// </summary>
     private void AddRewardToGamblingScreen(int goldReward)
     {
-        if (gamblingScreen != null)
+        var inventory = PlayerInventoryManager.Instance;
+        if (inventory != null && gamblingScreen != null)
         {
-            gamblingScreen.goldAmount += goldReward * gamblingScreen.betMultiplierValue;
+            inventory.goldAmount += goldReward * gamblingScreen.betMultiplierValue;
+        }
+        else if (inventory == null)
+        {
+            Debug.LogWarning("WinCondition: PlayerInventoryManager instance missing.");
         }
         else
         {

@@ -18,7 +18,6 @@ public class MarbleSelect : MonoBehaviour
 
     public void OnStartGameButtonPressed()
     {
-        selectMarbleScreen.SetActive(false);
         LoadInSelectedMarbles();
     }
 

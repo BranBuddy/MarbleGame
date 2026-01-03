@@ -51,9 +51,17 @@ public class ReadGoldInput : MonoBehaviour
             return;
         }
 
-        if (gamblingScreen.goldAmount >= betAmount)
+        var inventory = PlayerInventoryManager.Instance;
+        if (inventory == null)
         {
-            gamblingScreen.goldAmount -= betAmount;
+            Debug.LogWarning("ReadGoldInput: PlayerInventoryManager instance missing; cannot process bet.");
+            insufficientGoldWarningImage.gameObject.SetActive(true);
+            return;
+        }
+
+        if (inventory.goldAmount >= betAmount)
+        {
+            inventory.goldAmount -= betAmount;
             insufficientGoldWarningImage.gameObject.SetActive(false);
 
             BetAmountValue += betAmount;

@@ -771,9 +771,9 @@ RectTransform:
   - {fileID: 947518376}
   m_Father: {fileID: 1403848020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 625, y: -22.5}
   m_SizeDelta: {x: 250, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &67440831
@@ -7932,7 +7932,6 @@ GameObject:
   - component: {fileID: 306172617}
   - component: {fileID: 306172622}
   - component: {fileID: 306172621}
-  - component: {fileID: 306172623}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8019,8 +8018,8 @@ RectTransform:
   - {fileID: 1390752694}
   - {fileID: 718171256}
   - {fileID: 6525815207003586651}
-  - {fileID: 1113111505}
   - {fileID: 1714070557}
+  - {fileID: 1113111505}
   - {fileID: 807589325}
   - {fileID: 53733483}
   m_Father: {fileID: 0}
@@ -8069,20 +8068,6 @@ MonoBehaviour:
   dropdownLinker: {fileID: 306172621}
   playerInformationPrefab: {fileID: 2031614980735976406, guid: 4ec4ed51978aec04a880a78cf3648146, type: 3}
   playerInformationContent: {fileID: 279914904}
---- !u!114 &306172623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306172616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 968b60c2b23d4cc4cb4cf822bfdedea1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuVisibility
-  visibleMenus: []
-  startingMenu: {fileID: 1113111504}
 --- !u!1 &306615999
 GameObject:
   m_ObjectHideFlags: 0
@@ -8224,9 +8209,9 @@ RectTransform:
   - {fileID: 2463894}
   m_Father: {fileID: 377194629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110.82825, y: -70}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 221.6565, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310991300
@@ -9166,7 +9151,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 132}
-  m_SizeDelta: {x: 221.6565, y: 140}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377194630
 MonoBehaviour:
@@ -53808,9 +53793,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1714070558}
-        m_TargetAssemblyTypeName: GamblingScreen, Assembly-CSharp
-        m_MethodName: InitializeGamblingScreen
+      - m_Target: {fileID: 306172622}
+        m_TargetAssemblyTypeName: MarbleSelect, Assembly-CSharp
+        m_MethodName: OnStartGameButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -53820,21 +53805,45 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 306172623}
-        m_TargetAssemblyTypeName: MenuVisibility, Assembly-CSharp
-        m_MethodName: AddMenuToList
-        m_Mode: 2
+      - m_Target: {fileID: 1095320776}
+        m_TargetAssemblyTypeName: CameraSwapper, Assembly-CSharp
+        m_MethodName: InitializeCameraList
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1714070556}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 306172622}
-        m_TargetAssemblyTypeName: MarbleSelect, Assembly-CSharp
-        m_MethodName: OnStartGameButtonPressed
+      - m_Target: {fileID: 1670797292}
+        m_TargetAssemblyTypeName: PlacementBoard, Assembly-CSharp
+        m_MethodName: InitializePlacementBoard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1670797292}
+        m_TargetAssemblyTypeName: PlacementBoard, Assembly-CSharp
+        m_MethodName: UpdateBoardUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1714070558}
+        m_TargetAssemblyTypeName: GamblingScreen, Assembly-CSharp
+        m_MethodName: InitializeGamblingScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -54872,9 +54881,9 @@ RectTransform:
   - {fileID: 952254900}
   m_Father: {fileID: 377194629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110.82825, y: -115}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 221.6565, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &646547555
@@ -56118,9 +56127,9 @@ RectTransform:
   - {fileID: 1683460232}
   m_Father: {fileID: 882583911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -22.5}
   m_SizeDelta: {x: 250, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800453609
@@ -57694,9 +57703,9 @@ RectTransform:
   - {fileID: 617738935}
   m_Father: {fileID: 882583911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 625, y: -22.5}
   m_SizeDelta: {x: 250, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969232365
@@ -58858,7 +58867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1113111505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61325,9 +61334,9 @@ RectTransform:
   - {fileID: 454395659}
   m_Father: {fileID: 377194629}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110.82825, y: -25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 221.6565, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336407528
@@ -63188,7 +63197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1714070557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -63224,6 +63233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0ee339bcc22cf488f9654d2372d6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamblingScreen
+  goldAmount: 100
   goldAmountText: {fileID: 454395660}
   bettingContent: {fileID: 279914904}
   dropdownLinker: {fileID: 306172621}
@@ -63731,54 +63741,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1670797292}
-        m_TargetAssemblyTypeName: PlacementBoard, Assembly-CSharp
-        m_MethodName: UpdateBoardUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1670797292}
-        m_TargetAssemblyTypeName: PlacementBoard, Assembly-CSharp
-        m_MethodName: InitializePlacementBoard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1095320776}
-        m_TargetAssemblyTypeName: CameraSwapper, Assembly-CSharp
-        m_MethodName: InitializeCameraList
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 306172623}
-        m_TargetAssemblyTypeName: MenuVisibility, Assembly-CSharp
-        m_MethodName: ClearMenuList
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1856729989}
         m_TargetAssemblyTypeName: StartGame, Assembly-CSharp
         m_MethodName: OnStartGameButtonPressed
@@ -108276,9 +108238,9 @@ RectTransform:
   - {fileID: 1577025408}
   m_Father: {fileID: 1403848020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -22.5}
   m_SizeDelta: {x: 250, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979225663
