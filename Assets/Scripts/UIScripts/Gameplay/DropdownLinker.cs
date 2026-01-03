@@ -107,6 +107,7 @@ public class DropdownLinker : MonoBehaviour
         if(allowDuplicateSelections)
         {
             isUpdating = false;
+            UpdatePlayerImages();
             return; // No need to update options if duplicates are allowed
         }
 
@@ -129,7 +130,8 @@ public class DropdownLinker : MonoBehaviour
         PopulateDropdown(dropdownPlayer3, availableOptionsFor3, selected3);
         PopulateDropdown(dropdownPlayer4, availableOptionsFor4, selected4);
 
-        EditNumberOfPlayersDropdown();        
+        EditNumberOfPlayersDropdown();
+        UpdatePlayerImages();
 
         isUpdating = false;
     }
@@ -150,6 +152,8 @@ public class DropdownLinker : MonoBehaviour
                 dropdowns[i].gameObject.SetActive(shouldShow);
             }
         }
+
+        UpdatePlayerImages();
     }
     
     private void EditNumberOfPlayersDropdown()
@@ -221,5 +225,56 @@ public class DropdownLinker : MonoBehaviour
         }
 
         return selectedMarbles;
+    }
+
+    private void UpdatePlayerImages()
+    {
+        if (playerImages == null || playerImages.Count == 0)
+        {
+            Debug.LogWarning("DropdownLinker: playerImages list is empty or not assigned!");
+            return;
+        }
+
+        List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown> { dropdownPlayer1, dropdownPlayer2, dropdownPlayer3, dropdownPlayer4 };
+
+        for (int i = 0; i < playerImages.Count; i++)
+        {
+            if (i < dropdowns.Count && dropdowns[i] != null && dropdowns[i].gameObject.activeSelf && dropdowns[i].options.Count > 0)
+            {
+                string marbleName = dropdowns[i].options[dropdowns[i].value].text;
+                Sprite marbleSprite = GetMarbleSpriteByName(marbleName);
+
+                if (playerImages[i] != null)
+                {
+                    playerImages[i].sprite = marbleSprite;
+                }
+            }
+        }
+    }
+
+    private Sprite GetMarbleSpriteByName(string marbleName)
+    {
+        // Try to get the marble prefab from the pool and find its MarbleSO reference
+        if (MarbleManager.Instance != null && MarbleManager.Instance.poolOfMarbles != null)
+        {
+            foreach (var marblePrefab in MarbleManager.Instance.poolOfMarbles.Keys)
+            {
+                if (marblePrefab != null && marblePrefab.name == marbleName)
+                {
+                    // Look for MarbleDataReference component
+                    MarbleDataReference dataRef = marblePrefab.GetComponent<MarbleDataReference>();
+                    if (dataRef != null && dataRef.marbleSO != null && dataRef.marbleSO.marbleSprite != null)
+                    {
+                        return dataRef.marbleSO.marbleSprite;
+                    }
+
+                    Debug.LogWarning($"DropdownLinker: Marble '{marbleName}' prefab is missing MarbleDataReference component or MarbleSO sprite is not assigned.");
+                    break;
+                }
+            }
+        }
+
+        Debug.LogWarning($"DropdownLinker: Could not find marble '{marbleName}' in pool.");
+        return null;
     }
 }

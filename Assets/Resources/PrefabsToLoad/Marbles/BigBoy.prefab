@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3970300749124936159}
   - component: {fileID: 8338704932414747683}
   - component: {fileID: -5175133183143634090}
+  - component: {fileID: -6387713143816698056}
   m_Layer: 0
   m_Name: BigBoy
   m_TagString: Marble
@@ -214,6 +215,19 @@ MonoBehaviour:
   showIMGUI: 1
   showWorldLabel: 1
   faceCamera: 1
+--- !u!114 &-6387713143816698056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688118468391386426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fb5bf0aaf99f848b1ddf34677c36f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarbleDataReference
+  marbleSO: {fileID: 11400000, guid: 0c669ece5d716a44ba66a7c8d875e6ad, type: 2}
 --- !u!1001 &7289222910839322934
 PrefabInstance:
   m_ObjectHideFlags: 0

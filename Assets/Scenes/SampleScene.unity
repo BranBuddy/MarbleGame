@@ -684,9 +684,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2087845457}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DataPersistenceManager, Assembly-CSharp
         m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 306172623}
+        m_TargetAssemblyTypeName: MenuVisibility, Assembly-CSharp
+        m_MethodName: OnMenuReset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8067,8 +8079,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MarbleSelect
   selectMarbleScreen: {fileID: 1113111504}
   dropdownLinker: {fileID: 306172621}
-  playerInformationPrefab: {fileID: 2031614980735976406, guid: 4ec4ed51978aec04a880a78cf3648146, type: 3}
-  playerInformationContent: {fileID: 279914904}
 --- !u!114 &306172623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54814,7 +54824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.12749197, b: 0.12749197, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -57495,7 +57505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.12749197, b: 0.12749197, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -62582,7 +62592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.12749197, b: 0.12749197, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -63145,7 +63155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.12749197, b: 0.12749197, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -63226,6 +63236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GamblingScreen
   goldAmountText: {fileID: 454395660}
   bettingContent: {fileID: 279914904}
+  bettingSlotPrefab: {fileID: 2031614980735976406, guid: 4ec4ed51978aec04a880a78cf3648146, type: 3}
   dropdownLinker: {fileID: 306172621}
   betMultiplierText: {fileID: 2463895}
   highestBetRewardText: {fileID: 952254901}
@@ -109094,50 +109105,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082943378}
   m_CullTransparentMesh: 1
---- !u!1 &2087845456
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2087845458}
-  - component: {fileID: 2087845457}
-  m_Layer: 0
-  m_Name: DataPersistenceManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2087845457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087845456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 336ba629ce700b9468af6d7c3e50a059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DataPersistenceManager
---- !u!4 &2087845458
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087845456}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 434.97455, y: -0.00001, z: 3896.495}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092191104
 GameObject:
   m_ObjectHideFlags: 0
@@ -111182,4 +111149,3 @@ SceneRoots:
   - {fileID: 1095320781}
   - {fileID: 2092191110}
   - {fileID: 492994531}
-  - {fileID: 2087845458}

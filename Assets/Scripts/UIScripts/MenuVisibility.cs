@@ -42,4 +42,10 @@ public class MenuVisibility : MonoBehaviour
         }
         visibleMenus.Clear();
     }
+
+    public void OnMenuReset()
+    {
+        ClearMenuList();
+        InitliazeMenuList();
+    }
 }

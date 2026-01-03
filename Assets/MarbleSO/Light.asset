@@ -22,3 +22,4 @@ MonoBehaviour:
   weight: 20
   bounciness: 10
   marbleMaterial: {fileID: 2100000, guid: a30afc617c5ca014c873894e8406a31f, type: 2}
+  marbleSprite: {fileID: -2026573806, guid: 1223b3e0c8ad82641beb44487e1eb13d, type: 3}

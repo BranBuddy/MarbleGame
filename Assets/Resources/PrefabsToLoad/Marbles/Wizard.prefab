@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4876660975460206729}
   - component: {fileID: 3947390258229359994}
   - component: {fileID: -4211462866780901620}
+  - component: {fileID: 2882633892570190325}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Marble
@@ -214,6 +215,19 @@ MonoBehaviour:
   showIMGUI: 1
   showWorldLabel: 1
   faceCamera: 1
+--- !u!114 &2882633892570190325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341599943993479547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fb5bf0aaf99f848b1ddf34677c36f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarbleDataReference
+  marbleSO: {fileID: 11400000, guid: d75d8cc084b356849ab6e15462dff8af, type: 2}
 --- !u!1001 &1422758906017878591
 PrefabInstance:
   m_ObjectHideFlags: 0

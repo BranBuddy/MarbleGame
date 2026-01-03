@@ -543,6 +543,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReadGoldInput
   insufficientGoldWarningImage: {fileID: 6967710099829299859}
   BetAmountText: {fileID: 131880240262373074}
+  marbleProfileImage: {fileID: 3382711425544095209}
+  marbleNameText: {fileID: 7597508693937564920}
+  uniqueBet: 0
 --- !u!1 &3025656858295583321
 GameObject:
   m_ObjectHideFlags: 0

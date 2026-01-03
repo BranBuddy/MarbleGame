@@ -9,26 +9,17 @@ using UnityEngine;
 /// Manages the gambling/betting UI screen for the marble game.
 /// Handles bet placement, gold tracking, multiplier calculations, and reward display.
 /// </summary>
-public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
+public class GamblingScreen : MonoBehaviour
 {
     private string input;
     [SerializeField] private TMP_Text goldAmountText;
     [SerializeField] private GameObject bettingContent;
+    [SerializeField] private GameObject bettingSlotPrefab; // Add this field to assign the betting slot prefab
     [SerializeField] private DropdownLinker dropdownLinker;
     [SerializeField] private TMP_Text betMultiplierText;
     [SerializeField] private TMP_Text highestBetRewardText;
     private float highestBetRewardValue = 0.0f;
     internal float betMultiplierValue = 2.0f;
-
-    public void SaveData(GameData data)
-    {
-        data.playerGold = Mathf.FloorToInt(PlayerInventoryManager.Instance.goldAmount);
-    }
-
-    public void LoadData(GameData data)
-    {
-        PlayerInventoryManager.Instance.goldAmount = data.playerGold;
-    }
 
     // Update is called once per frame
     void Update()
@@ -46,16 +37,13 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
     {
         Dictionary<string, int> aggregatedBets = new Dictionary<string, int>();
 
-        Debug.Log($"bettingContent children count: {bettingContent.transform.childCount}");
-
         foreach(Transform child in bettingContent.transform)
         {
-            ReadGoldInput readGoldInput = child.GetComponentInChildren<ReadGoldInput>();
+            MarbleGamblingProfile readGoldInput = child.GetComponentInChildren<MarbleGamblingProfile>();
             if (readGoldInput != null)
             {
                 string playerName = child.GetComponentInChildren<TMP_Text>().text;
                 int betAmount = readGoldInput.BetAmountValue;
-                Debug.Log($"Found bet - Player: {playerName}, Amount: {betAmount}");
 
                 if (aggregatedBets.ContainsKey(playerName))
                 {
@@ -66,13 +54,8 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
                     aggregatedBets[playerName] = betAmount;
                 }
             }
-            else
-            {
-                Debug.Log($"No ReadGoldInput found in child: {child.name}");
-            }
         }
 
-        Debug.Log($"Total aggregated bets: {aggregatedBets.Count}");
         return aggregatedBets;
     }
 
@@ -87,7 +70,7 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
 
         foreach(Transform child in bettingContent.transform)
         {
-            ReadGoldInput readGoldInput = child.GetComponentInChildren<ReadGoldInput>();
+            MarbleGamblingProfile readGoldInput = child.GetComponentInChildren<MarbleGamblingProfile>();
             if (readGoldInput != null)
             {
                 // Track the largest single bet rather than aggregating duplicate names.
@@ -110,14 +93,12 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
 
         foreach(Transform child in bettingContent.transform)
         {
-            ReadGoldInput readGoldInput = child.GetComponentInChildren<ReadGoldInput>();
+            MarbleGamblingProfile readGoldInput = child.GetComponentInChildren<MarbleGamblingProfile>();
             if (readGoldInput != null && readGoldInput.uniqueBet)
             {
                 totalUniqueBets++;
             }
         }
-
-        Debug.Log("Total Unique Bets: " + totalUniqueBets);
 
         UniqueBetTable(totalUniqueBets);
         int availableMarbles = MarbleManager.Instance.availableMarbles.Count;
@@ -178,13 +159,14 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
     /// </summary>
     public void InitializeGamblingScreen()
     {
-        List<GameObject> marbleAccounts = new List<GameObject>();
 
-        foreach (Transform child in bettingContent.transform)
+        if (bettingContent == null)
         {
-            marbleAccounts.Add(child.gameObject);
+            Debug.LogError("GamblingScreen: bettingContent is not assigned in the Inspector!");
+            return;
         }
-
+        
+        // Get selected marble names
         List<string> selectedNames = new List<string>();
         if (dropdownLinker != null)
         {
@@ -192,16 +174,66 @@ public class GamblingScreen : MonoBehaviour, IDataPeristenceManager
         }
         else
         {
-            for (int i = 0; i < MarbleManager.Instance.availableMarbles.Count; i++)
+            if (MarbleManager.Instance != null && MarbleManager.Instance.availableMarbles != null)
             {
-                selectedNames.Add(MarbleManager.Instance.availableMarbles[i].name);
+                for (int i = 0; i < MarbleManager.Instance.availableMarbles.Count; i++)
+                {
+                    selectedNames.Add(MarbleManager.Instance.availableMarbles[i].name);
+                }
+            }
+            else
+            {
+                Debug.LogError("GamblingScreen: MarbleManager.Instance or availableMarbles is null!");
+                return;
             }
         }
-
+        
+        BettingContentCleanup();
+        
+        // Create new slots based on selected marbles
+        List<GameObject> marbleAccounts = new List<GameObject>();
+        
+        if (bettingSlotPrefab == null)
+        {
+            Debug.LogError("GamblingScreen: bettingSlotPrefab is not assigned!");
+            return;
+        }
+        
+        for (int i = 0; i < selectedNames.Count; i++)
+        {
+            GameObject newSlot = Instantiate(bettingSlotPrefab, bettingContent.transform);
+            marbleAccounts.Add(newSlot);
+        }
+        
+        // Assign marble names to slots
         int assignCount = Mathf.Min(marbleAccounts.Count, selectedNames.Count);
+        
         for (int i = 0; i < assignCount; i++)
         {
-            marbleAccounts[i].GetComponentInChildren<TMP_Text>().text = selectedNames[i];
+            MarbleGamblingProfile profile = marbleAccounts[i].GetComponentInChildren<MarbleGamblingProfile>();
+            if (profile != null)
+            {
+                profile.SetMarbleName(selectedNames[i]);
+            }
+            else
+            {
+                marbleAccounts[i].GetComponentInChildren<TMP_Text>().text = selectedNames[i];
+            }
+        }
+        
+    }
+
+    private void BettingContentCleanup()
+    {
+        List<Transform> childrenToDestroy = new List<Transform>();
+        foreach (Transform child in bettingContent.transform)
+        {
+            childrenToDestroy.Add(child);
+        }
+
+        foreach (Transform child in childrenToDestroy)
+        {
+            DestroyImmediate(child.gameObject);
         }
     }
 }

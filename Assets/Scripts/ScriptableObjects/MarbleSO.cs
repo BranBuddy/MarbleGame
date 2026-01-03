@@ -19,5 +19,6 @@ public class MarbleSO : ScriptableObject
 
     [Header("Marble Appearance")]
     public Material marbleMaterial;
+    public Sprite marbleSprite;
     
 }

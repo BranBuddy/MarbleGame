@@ -21,30 +21,6 @@ public class ResetGame : MonoBehaviour
     }
 
     /// <summary>
-    /// Reactivates the gambling and marble selection screens for a new round.
-    /// </summary>
-    private void ReactivateResetUI()
-    {
-        if (gamblingScreenUI != null)
-        {
-            gamblingScreenUI.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("ResetGame: gamblingScreenUI not assigned.");
-        }
-
-        if (MarbleSelectionUI != null)
-        {
-            MarbleSelectionUI.SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("ResetGame: MarbleSelectionUI not assigned.");
-        }
-    }
-
-    /// <summary>
     /// Destroys all marble GameObjects with the Marble tag.
     /// </summary>
     private void DestroyAllMarbles()
@@ -100,9 +76,6 @@ public class ResetGame : MonoBehaviour
 
         // Reset time
         Time.timeScale = 0f;
-
-        // Reactivate UI screens for new round
-        ReactivateResetUI();
 
         // Deactivate win condition UI
         if (winConditionUI != null)

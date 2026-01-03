@@ -14,18 +14,16 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
 
         this.fileHandler = new FileHandler(Application.persistentDataPath, "gameData.json");
         this.gameData = fileHandler.Load();
+        
         if (this.gameData == null)
-        {
-            NewGame();
-        }
-
-        LoadGame();
-
-        if(this.gameData == null)
         {
             Debug.Log("No data found. Initializing data to defaults.");
             NewGame();
         }
+        
+        // Only load game data into managers on first initialization
+        // Don't reload if we're being created mid-game (e.g., during a save operation)
+        LoadGame();
     }
 
     public void NewGame()
@@ -44,15 +42,26 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
             return;
         }
 
+        Debug.Log("DataPersistenceManager: SaveGame called");
+        
+        // First, gather current state from all managers
         foreach(var dataPersistenceManager in FindAllDataPersistenceManagers())
         {
             dataPersistenceManager.SaveData(gameData);
         }
+        
+        // Then save to file
         fileHandler.Save(gameData);
+        
+        Debug.Log("DataPersistenceManager: SaveGame completed");
+        
+        // DO NOT call LoadGame here - the data is already correct in memory
     }
 
     public void LoadGame()
     {
+        Debug.Log("DataPersistenceManager: LoadGame called - Stack Trace: " + UnityEngine.StackTraceUtility.ExtractStackTrace());
+        
         if (this.gameData == null)
         {
             Debug.LogWarning("No game data to load; creating new game data.");
@@ -63,6 +72,8 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
         {
             dataPersistenceManager.LoadData(gameData);
         }
+        
+        Debug.Log("DataPersistenceManager: LoadGame completed");
     }
     public void DeleteGameData()
     {

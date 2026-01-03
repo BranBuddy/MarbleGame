@@ -7,8 +7,6 @@ public class MarbleSelect : MonoBehaviour
 {
     [SerializeField] private GameObject selectMarbleScreen;
     [SerializeField] private DropdownLinker dropdownLinker;
-    [SerializeField] private GameObject playerInformationPrefab;
-    [SerializeField] private GameObject playerInformationContent;
 
     public void Start()
     {
@@ -38,10 +36,5 @@ public class MarbleSelect : MonoBehaviour
 
         MarbleManager.Instance.PlaceMarblesAtStartLine();
         Time.timeScale = 0;
-
-        for(int i = 0; i < MarbleManager.Instance.availableMarbles.Count; i++)
-        {
-            GameObject playerInfoEntry = Instantiate(playerInformationPrefab, playerInformationContent.transform);
-        }
     }
 }

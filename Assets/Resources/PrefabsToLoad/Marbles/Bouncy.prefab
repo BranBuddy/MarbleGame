@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7836664888452925393}
   - component: {fileID: 8166858824788222270}
   - component: {fileID: 3743225996623912335}
+  - component: {fileID: 3450149726377280239}
   m_Layer: 0
   m_Name: Bouncy
   m_TagString: Marble
@@ -214,6 +215,19 @@ MonoBehaviour:
   showIMGUI: 1
   showWorldLabel: 1
   faceCamera: 1
+--- !u!114 &3450149726377280239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291423856542891452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fb5bf0aaf99f848b1ddf34677c36f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MarbleDataReference
+  marbleSO: {fileID: 11400000, guid: bfbee3aff2c658645859ea4eb40319dd, type: 2}
 --- !u!1001 &2298633128366254998
 PrefabInstance:
   m_ObjectHideFlags: 0
