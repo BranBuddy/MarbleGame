@@ -19,6 +19,35 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager>, IDataPe
         }
     }
 
+    private void Start()
+    {
+        // Validate after data has been loaded
+        ValidateIfItemOwned();
+    }
+
+    private void ValidateIfItemOwned()
+    {
+        var shopItems = Resources.LoadAll<ShopItemsSO>("ShopItems");
+        
+        Debug.Log($"PlayerInventoryManager: ValidateIfItemOwned - Checking {shopItems.Length} shop items against {ownedItems.Count} owned items");
+        Debug.Log($"PlayerInventoryManager: Owned items in inventory: {string.Join(", ", ownedItems)}");
+
+        foreach (var item in shopItems)
+        {
+            bool isOwned = ownedItems.Contains(item.itemName);
+            if (isOwned)
+            {
+                item.isPurchased = true;
+                Debug.Log($"PlayerInventoryManager: Item '{item.itemName}' is marked as purchased.");
+            }
+            else
+            {
+                item.isPurchased = false;
+                Debug.Log($"PlayerInventoryManager: Item '{item.itemName}' (type: {item.itemType}) is NOT owned. Checking inventory: {string.Join(", ", ownedItems)}");
+            }
+        }
+    }
+
     internal void AddItemToInventory(ShopItemsSO item)
     {
         if (ownedItems == null)
@@ -73,5 +102,8 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager>, IDataPe
         }
         
         Debug.Log($"PlayerInventoryManager: LoadData called. Loaded gold: {goldAmount}, owned items count: {ownedItems.Count}");
+        
+        // Validate after data has been loaded
+        ValidateIfItemOwned();
     }
 }

@@ -16,4 +16,11 @@ public class ShopItemsSO : ScriptableObject
     public Sprite itemIcon;
     public int itemPrice;
     public bool isPurchased;
+    public bool isFeatured;
+    public bool isOnSale;
+    
+    [Range(0f, 100f)]
+    [Tooltip("Discount percentage (0-100)")]
+    [HideInInspector]
+    public int saleDiscountPercentage;
 }
