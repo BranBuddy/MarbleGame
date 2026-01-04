@@ -25,7 +25,7 @@ public class PlacementBoardStrip : MonoBehaviour
     {
         if (placementNumberText != null)
         {
-            placementNumberText.text = placementNumber.ToString();
+            placementNumberText.text = placementNumber.ToString() + ".";
         }
         
         if (placementNameText != null && marble != null)

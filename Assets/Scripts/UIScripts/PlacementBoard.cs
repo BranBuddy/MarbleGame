@@ -34,11 +34,12 @@ public class PlacementBoard : MonoBehaviour
         var source = MarbleManager.Instance != null ? MarbleManager.Instance.availableMarbles : null;
         if (source == null) return;
 
-        // Ensure unique marbles before creating strips
-        var uniqueMarbles = source.Where(m => m != null).Distinct().ToList();
-        for(int i = 0; i < uniqueMarbles.Count; i++)
+        // Create a strip for each marble instance (including duplicates)
+        for(int i = 0; i < source.Count; i++)
         {
-            GameObject marble = uniqueMarbles[i];
+            GameObject marble = source[i];
+            if (marble == null) continue;
+            
             PlacementBoardStrip strip = Instantiate(placementBoardStripPrefab, placementBoardContent.transform);
             strip.placementIndex = i;
             strip.SetAssignedMarble(marble);
@@ -56,13 +57,6 @@ public class PlacementBoard : MonoBehaviour
             return new List<GameObject>();
         }
 
-        // Ensure unique by sanitized name (treat same-named marbles as one)
-        string Clean(string name)
-        {
-            if (string.IsNullOrEmpty(name)) return "";
-            return name.Replace(" (Clone)", "").Replace("(Clone)", "").Trim();
-        }
-
         return MarbleManager.Instance.availableMarbles
             .Where(m => m != null)
             .OrderBy(marble =>
@@ -71,8 +65,6 @@ public class PlacementBoard : MonoBehaviour
                 delta.y = 0f;
                 return delta.sqrMagnitude;
             })
-            .GroupBy(m => Clean(m.name))
-            .Select(g => g.First())
             .ToList();
     }
     public void UpdateBoardUI()
@@ -82,19 +74,25 @@ public class PlacementBoard : MonoBehaviour
             return;
         }
 
-        // Keep rows active; update content per rank/elimination without hiding
-
         // Rank available marbles by proximity to target
         var availableByRank = GetSortedMarbles();
         var availableSet = new HashSet<GameObject>(availableByRank);
-        // Detect eliminated via strips (includes null assigned marbles)
+        
+        // Detect eliminated: a strip is eliminated if its assigned marble is not in the available set
         var eliminatedStrips = new List<PlacementBoardStrip>();
+        var activeStrips = new List<PlacementBoardStrip>();
+        
         foreach (var s in strips)
         {
             var am = s.assignedMarble;
+            // A marble is eliminated if it's null or not in the available set
             if (am == null || !availableSet.Contains(am))
             {
                 eliminatedStrips.Add(s);
+            }
+            else
+            {
+                activeStrips.Add(s);
             }
         }
 
@@ -146,36 +144,38 @@ public class PlacementBoard : MonoBehaviour
             return display;
         }
 
-        // Fill rows: ranked marbles first
+        // Fill rows: ranked active marbles first
         int row = 0;
-        for (; row < strips.Count && row < availableByRank.Count; row++)
+        for (int i = 0; i < availableByRank.Count && row < strips.Count; i++)
         {
-            var marble = availableByRank[row];
-            strips[row].SetPlacement(row + 1, marble);
-            strips[row].transform.SetSiblingIndex(row);
-            // Display sanitized name (no numbering)
-            strips[row].placementNameText.text = NextDisplayName(marble, false);
-            strips[row].gameObject.SetActive(true);
+            var marble = availableByRank[i];
+            // Find the strip assigned to this marble
+            var strip = strips.FirstOrDefault(s => s.assignedMarble == marble);
+            if (strip == null) continue; // Safety check
+            
+            strip.SetPlacement(row + 1, marble);
+            strip.transform.SetSiblingIndex(row);
+            strip.placementNameText.text = NextDisplayName(marble, false);
+            strip.gameObject.SetActive(true);
+            row++;
         }
 
-            // Then eliminated marbles only (avoid duplicates of available marbles)
-            // Collapse eliminated by base name to avoid duplicate labels
-            var eliminatedUnique = eliminatedStrips
-                .GroupBy(es => es.BaseName)
-                .Select(g => g.First())
-                .ToList();
-
-            int elimIdx = 0;
-            for (; row < strips.Count && elimIdx < eliminatedUnique.Count; row++, elimIdx++)
-            {
-                var es = eliminatedUnique[elimIdx];
-                var nameSource = es.assignedMarble; // may be null
-                es.SetEliminated(nameSource);
-                es.transform.SetSiblingIndex(row);
-                // Ensure unique display name using base name even when marble is null
-                es.placementNameText.text = NextDisplayNameFromBase(es.BaseName, true);
-                es.gameObject.SetActive(true);
-            }
+        // Then eliminated marbles (show all eliminated, even duplicates)
+        for (int i = 0; i < eliminatedStrips.Count && row < strips.Count; i++, row++)
+        {
+            var es = eliminatedStrips[i];
+            var nameSource = es.assignedMarble; // may be null
+            es.SetEliminated(nameSource);
+            es.transform.SetSiblingIndex(row);
+            es.placementNameText.text = NextDisplayNameFromBase(es.BaseName, true);
+            es.gameObject.SetActive(true);
+        }
+        
+        // Deactivate any unused strips
+        for (int i = row; i < strips.Count; i++)
+        {
+            strips[i].gameObject.SetActive(false);
+        }
 
         var rt = placementBoardContent.GetComponent<RectTransform>();
         if(rt != null)

@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.324, y: -0.079016}
+  m_AnchoredPosition: {x: 21.324001, y: -1.9000304}
   m_SizeDelta: {x: 139.56, y: 18.358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3186090283725773990
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MarbleName
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48de9c5eabbcd114a871bbad13266848, type: 2}
+  m_sharedMaterial: {fileID: -1241086891569507158, guid: 48de9c5eabbcd114a871bbad13266848, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 15.3, y: 0.021}
+  m_AnchoredPosition: {x: 24.3, y: -1.8}
   m_SizeDelta: {x: 19.3549, y: 18.558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3319515079733664626
@@ -204,8 +204,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1.)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48de9c5eabbcd114a871bbad13266848, type: 2}
+  m_sharedMaterial: {fileID: -1241086891569507158, guid: 48de9c5eabbcd114a871bbad13266848, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -335,14 +335,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.59607846}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.77254903}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1659799860, guid: 375e78786d5bb7e47929945e9bf10a62, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
