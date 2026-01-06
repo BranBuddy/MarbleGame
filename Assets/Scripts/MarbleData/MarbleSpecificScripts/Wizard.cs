@@ -1,8 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class Wizard : MarbleAbility
 {
+
+    private List<GameObject> playersInRange = new List<GameObject>();
     protected override IEnumerator ActivateAbility()
     {
         yield return StartCoroutine(TeleportAbility(20f));
@@ -16,23 +20,38 @@ public class Wizard : MarbleAbility
 
         Debug.Log("Teleport Activated!");
 
-        FindPlayerToTeleport();
+        TeleportToRandomPlayer();
 
         yield return null;
     }
 
-    private void FindPlayerToTeleport()
+    private void TeleportToRandomPlayer()
     {
-        Physics.SphereCast(transform.position, 50f, Vector3.up, out RaycastHit hitInfo);
+        if(playersInRange.Count == 0)
+            return;
 
-        if(hitInfo.collider != null && hitInfo.collider.CompareTag("Marble"))
-        {
-            Vector3 directionToPlayer = (hitInfo.collider.transform.position - transform.position).normalized;
-            Vector3 teleportPosition = hitInfo.collider.transform.position - directionToPlayer * 5f;
+        int randomIndex = Random.Range(0, playersInRange.Count);
+        GameObject targetPlayer = playersInRange[randomIndex];
 
-            transform.position = teleportPosition;
-        }
+        transform.position = targetPlayer.transform.position + Vector3.forward * 2f; // Teleport above the player
+        targetPlayer.transform.position = transform.position - Vector3.forward * .5f; // Teleport player above the wizard
 
-        Debug.DrawRay(transform.position, Vector3.up * 50f, Color.red, 2.0f);
+        playersInRange.Clear();
     }
+
+    private void AddPlayerInRange(GameObject player)
+    {
+        if(playersInRange.Contains(player))
+            return;
+
+        playersInRange.Add(player);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Marble") && other.gameObject != this.gameObject && !onCooldown)
+        {
+            AddPlayerInRange(other.gameObject);
+        }
+    }   
 }

@@ -5,25 +5,41 @@ public class PatientZero : MarbleAbility
 {
     protected override IEnumerator ActivateAbility()
     {
-        yield return StartCoroutine(SideStepAbility(.1f, 10));
+        yield return StartCoroutine(Intangibility(5f));
         yield return StartCoroutine(ResetCooldown(Random.Range(5, 10)));
     }
 
-    private IEnumerator SideStepAbility(float duration, float sideStepStrength)
+    private IEnumerator Intangibility(float duration)
     {
         if(movement == null)
             yield break;
 
+        Material originalMaterial = GetComponent<Renderer>().material;
+
         Rigidbody rb = movement.GetComponent<Rigidbody>();
 
-        Vector3 originalDirection = movement.transform.forward;
+        Debug.Log("Intangibility Activated!");
+        int marbleLayer = LayerMask.NameToLayer("Marble");
+        if (marbleLayer == -1)
+        {
+            Debug.LogError("PatientZero: Layer 'Marble' not found. Please create this layer.");
+            yield break;
+        }
 
-        rb.AddForce(movement.transform.right * sideStepStrength, ForceMode.VelocityChange);
+        movement.handling *= 1.5f; // Increase handling while intangible
+        movement.acceleration *= 1.5f; // Increase acceleration while intangible
 
-        yield return new WaitForSeconds(duration);
+        Material intangibleMaterial = new Material(originalMaterial);
+        
+        // Set the alpha value for transparency
+        intangibleMaterial.color = new Color(214f/255f, 80f/255f, 80f/255f, 0.5f);
+        intangibleMaterial.SetFloat("_Glossiness", 3); // Transparent mode
     
-        rb.AddForce(-movement.transform.right * sideStepStrength, ForceMode.VelocityChange);
-
-        Debug.Log("Side Step Ended!");
+        GetComponent<Renderer>().material = intangibleMaterial;
+        Physics.IgnoreLayerCollision(gameObject.layer, marbleLayer, true);
+        yield return new WaitForSeconds(duration);
+        GetComponent<Renderer>().material = originalMaterial;
+        Physics.IgnoreLayerCollision(gameObject.layer, marbleLayer, false);
+        Debug.Log("Intangibility Ended!");
     }
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd919d1268e58d843954149ddcc2c105, type: 3}
+  m_Name: Feather
+  m_EditorClassIdentifier: Assembly-CSharp::MarbleSO
+  marbleName: Light
+  marbleDescription: Light
+  isUnlocked: 1
+  speed: 2
+  acceleration: 8
+  handling: 55
+  health: 0
+  weight: 20
+  bounciness: 10
+  marbleMaterial: {fileID: 2100000, guid: a30afc617c5ca014c873894e8406a31f, type: 2}
+  marbleSprite: {fileID: -2026573806, guid: 1223b3e0c8ad82641beb44487e1eb13d, type: 3}

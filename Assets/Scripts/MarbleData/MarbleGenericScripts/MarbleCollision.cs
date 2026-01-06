@@ -37,9 +37,7 @@ public class MarbleCollision : MonoBehaviour
         Vector3 impulse = normal * j;
 
         thisRb.AddForce((-impulse * otherRb.mass / thisRb.mass) * thisMarbleMovement.bounciness, ForceMode.Impulse);
-
-        if (collision.gameObject.CompareTag("Marble"))
-            otherRb.AddForce((impulse * thisRb.mass / otherRb.mass) * thisMarbleMovement.bounciness, ForceMode.Impulse);
+        otherRb.AddForce((impulse * thisRb.mass / otherRb.mass) * thisMarbleMovement.bounciness, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)

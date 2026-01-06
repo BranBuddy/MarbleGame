@@ -177,8 +177,17 @@ public class MarbleMovement : MonoBehaviour
     private void EnforceSpeedLimit()
     {
         float effSpeed = speed * speedMultiplier;
-        if (enforceSpeedCap && rb.linearVelocity.magnitude > effSpeed)
-            rb.linearVelocity = rb.linearVelocity.normalized * effSpeed;
+        if (enforceSpeedCap)
+        {
+            var v = rb.linearVelocity;
+            var horizontal = new Vector3(v.x, 0f, v.z);
+            float hMag = horizontal.magnitude;
+            if (hMag > effSpeed)
+            {
+                var clampedHorizontal = horizontal.normalized * effSpeed;
+                rb.linearVelocity = new Vector3(clampedHorizontal.x, v.y, clampedHorizontal.z);
+            }
+        }
     }
 
     private void OnDestroy()

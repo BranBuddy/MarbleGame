@@ -15,8 +15,8 @@ MonoBehaviour:
   marbleName: Wizard
   marbleDescription: 
   isUnlocked: 0
-  speed: 6
-  acceleration: 6
+  speed: 8
+  acceleration: 3
   handling: 60
   health: 0
   weight: 25

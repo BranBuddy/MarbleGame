@@ -5,8 +5,8 @@ public class Feather : MarbleAbility
 {
     protected override IEnumerator ActivateAbility()
     {
-        yield return StartCoroutine(DashAbility(2.0f, marbleData.speed * 10f));
-        yield return StartCoroutine(ResetCooldown(Random.Range(5.0f, 10.0f)));
+        yield return StartCoroutine(DashAbility(2.0f, marbleData.speed * 8f));
+        yield return StartCoroutine(ResetCooldown(Random.Range(8.0f, 10.0f)));
     }
 
     private IEnumerator DashAbility(float dashDuration, float dashSpeed)

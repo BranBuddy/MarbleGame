@@ -106,4 +106,26 @@ public class PlayerInventoryManager : Singleton<PlayerInventoryManager>, IDataPe
         // Validate after data has been loaded
         ValidateIfItemOwned();
     }
+
+    /// <summary>
+    /// Debug method: Unlocks all shop items and adds them to the player inventory.
+    /// </summary>
+    public void UnlockAllItems()
+    {
+        var shopItems = Resources.LoadAll<ShopItemsSO>("ShopItems");
+        
+        Debug.Log($"[DEBUG] Unlocking all {shopItems.Length} items!");
+        
+        foreach (var item in shopItems)
+        {
+            if (!ownedItems.Contains(item.itemName))
+            {
+                ownedItems.Add(item.itemName);
+                item.isPurchased = true;
+                Debug.Log($"[DEBUG] Unlocked: {item.itemName}");
+            }
+        }
+        
+        Debug.Log($"[DEBUG] All items unlocked! Total owned items: {ownedItems.Count}");
+    }
 }

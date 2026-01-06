@@ -9,6 +9,7 @@ public class ResetGame : MonoBehaviour
     [SerializeField] private GameObject MarbleSelectionUI;
     [SerializeField] private GameObject winConditionUI;
     [SerializeField] private WinCondition winCondition;
+    [SerializeField] private GameObject placementBoard;
 
     void Start()
     {
@@ -63,6 +64,17 @@ public class ResetGame : MonoBehaviour
         // Destroy all marbles and betting UI elements
         DestroyAllMarbles();
         DestroyAllBettingElements();
+
+        // Reset placement board so it is empty until next game
+        var placementBoardComponent = placementBoard.GetComponent<PlacementBoard>();
+        if (placementBoardComponent != null)
+        {
+            placementBoardComponent.ResetBoard();
+        }
+        else
+        {
+            Debug.LogWarning("ResetGame: PlacementBoard not found to reset.");
+        }
 
         // Reset the win condition state for next round
         if (winCondition != null)

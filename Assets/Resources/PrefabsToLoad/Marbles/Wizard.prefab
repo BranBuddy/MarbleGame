@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 3947390258229359994}
   - component: {fileID: -4211462866780901620}
   - component: {fileID: 2882633892570190325}
-  m_Layer: 0
+  - component: {fileID: 720844984338045120}
+  m_Layer: 3
   m_Name: Wizard
   m_TagString: Marble
   m_Icon: {fileID: 0}
@@ -182,6 +183,9 @@ MonoBehaviour:
   accelerationMultiplier: 1.5
   enforceSpeedCap: 0
   thrustUsesMass: 1
+  target: {fileID: 0}
+  constantDirection: {x: 0, y: 0, z: 1}
+  seekTarget: 0
 --- !u!114 &3947390258229359994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wizard
   marbleDataSO: {fileID: 11400000, guid: d75d8cc084b356849ab6e15462dff8af, type: 2}
-  movement: {fileID: 4876660975460206729}
 --- !u!114 &-4211462866780901620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +231,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MarbleDataReference
   marbleSO: {fileID: 11400000, guid: d75d8cc084b356849ab6e15462dff8af, type: 2}
+--- !u!135 &720844984338045120
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341599943993479547}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.8379822
+  m_Center: {x: 0, y: 0, z: -0.13308716}
 --- !u!1001 &1422758906017878591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,6 +303,10 @@ PrefabInstance:
     - target: {fileID: 5683271512947092346, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: m_Name
       value: CinemachineCamera (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5683271512947092346, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8294040400475417070, guid: 5d1f561ffd2a3694282a1821c36e0488, type: 3}
       propertyPath: Target.TrackingTarget

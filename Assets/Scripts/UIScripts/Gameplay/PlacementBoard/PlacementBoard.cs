@@ -186,4 +186,37 @@ public class PlacementBoard : MonoBehaviour
     }
 
     // Positions dictionary removed: ranking reads live transform positions
+
+    /// <summary>
+    /// Clears all instantiated placement strips and resets the board UI.
+    /// Call this when the game is reset so the board is empty until a new game initializes it.
+    /// </summary>
+    public void ResetBoard()
+    {
+        // Destroy existing strip game objects
+        foreach (var s in strips)
+        {
+            if (s != null)
+            {
+                Destroy(s.gameObject);
+            }
+        }
+        strips.Clear();
+
+        // Safety: clear any leftover children under the content container
+        if (placementBoardContent != null)
+        {
+            foreach (Transform child in placementBoardContent.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        // Rebuild layout so the UI reflects the cleared state
+        var rt = placementBoardContent != null ? placementBoardContent.GetComponent<RectTransform>() : null;
+        if (rt != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
+        }
+    }
 }
